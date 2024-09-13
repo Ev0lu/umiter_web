@@ -1,0 +1,665 @@
+.leftMenu_side_wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.mainNav{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+}
+
+.logotype{
+    width: 100%;
+    height: 51%;
+}
+
+.navMenuLink{
+    display: flex;
+    cursor: pointer;
+    height: 100%;
+    gap: 5%;
+    max-width: 284px;
+    font-size: 20px;
+    border-radius: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 15px;
+    align-items: center;
+    justify-content: start;
+    border: 1px solid lightgray;
+    
+
+}
+
+.navMenu_active{
+    border: 1px solid #D5FF03;
+}
+
+
+.navMenuLink p{
+    font-family: 'Formular';
+    opacity: 0.9;
+    color: white;
+
+}
+.newTerrariumForm{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.newTerrariumForm_wrapper{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.rightQR_side{
+    background-color: #181818;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.rightQR_side_wrapper{
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    padding: 3% 5% 2% 2%;
+
+    
+}
+
+
+.right_side__image{
+    display: flex;
+    justify-content: end;
+}
+
+.rightSide_humidity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.leftSide_temperature{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.profileName{
+    width: 100%;
+    margin-bottom: 10%;
+    margin-top: 5%;
+    display: flex;
+    gap: 15px;
+    color: white;
+    font-family: 'Formular';
+    justify-content: end;
+    align-items: end;
+}
+
+
+.grid_item{
+    cursor: pointer;
+}
+
+.statistic{
+    color: white;
+    font-family: 'Formular';
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8%;
+    max-width: 785px;
+    margin-left: 5%;
+    font-size: 22px;
+    margin-bottom: 3%;
+}
+
+.statistic_bottom_sign{
+    color: #BDBDBD;
+    font-size: 18px;
+    margin-top: 5%;
+}
+
+.bottomInscription{
+    margin-top: 10px;
+    color: #BDBDBD;
+    width: 50px;
+    font-size: 18px;
+}
+
+.statistic_top_sign{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+
+}
+
+.statistic_right{
+    text-align: center;
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pageTitle{
+    display: flex;
+    max-width: 100%;
+    gap: 30%;
+    padding-right: 10%;
+}
+
+.pageTitle{
+    height: 8%;
+    color: #D5FF03;
+    font-family: 'Ultramono Wide Black';
+    font-size: 8px;
+    margin-left: 4%;
+    margin-bottom: 4%;
+}
+
+.leftSide{
+    max-width: 100%;
+    overflow: hidden;
+    max-width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leftSide img{
+    min-width: 40px;
+    min-height: 40px;
+    cursor: pointer;
+}
+
+.rightSide img{
+    min-width: 25px;
+    min-height: 20px;
+
+    cursor: pointer;
+}
+
+.leftSide h1{
+    margin-right: 30px;    
+}
+
+.rightSide{
+    max-width: 100%;
+    max-width: 40%;
+
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.rightSide h1{
+    margin-right: 30px;    
+}
+.leftSide{
+    position: relative;
+}
+.leftSide::after{
+    position: absolute;
+    content: "";
+    top: 75%;
+    width: 100%;
+    height: 10px;
+    border-bottom: 1px solid white;
+}
+
+@media (max-width: 1120px) {
+    .pageTitle{
+        font-size: 6px;
+    }
+    .statistic{
+        color: white;
+        font-family: 'Formular';
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8%;
+        max-width: 785px;
+        margin-left: 5%;
+        font-size: 20px;
+        margin-bottom: 3%;
+    }
+    .statistic_bottom_sign{
+        color: #BDBDBD;
+        font-size: 16px;
+        margin-top: 5%;
+    
+    
+    }
+    
+    .bottomInscription{
+        margin-top: 10px;
+        color: #BDBDBD;
+        width: 50px;
+        font-size: 16px;
+    
+    }
+}
+
+
+@media (max-width: 900px) {
+    .pageTitle{
+        font-size: 5px;
+    }
+    .statistic{
+        color: white;
+        font-family: 'Formular';
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8%;
+        max-width: 785px;
+        margin-left: 5%;
+        font-size: 16px;
+        margin-bottom: 3%;
+    }
+    .statistic_bottom_sign{
+        color: #BDBDBD;
+        font-size: 12px;
+        margin-top: 5%;
+    
+    
+    }
+    
+    .bottomInscription{
+        margin-top: 10px;
+        color: #BDBDBD;
+        width: 50px;
+        font-size: 12px;
+    
+    }
+}
+
+@media (max-width: 700px) {
+    .pageTitle{
+        flex-direction: column;
+        gap: 20px;
+        align-items: start;
+        text-align: start;
+        height: 90px;
+        justify-content: space-between;
+    }
+    .statistic{
+        color: white;
+        font-family: 'Formular';
+        display: flex;
+        justify-content:initial;
+        margin-right: 10px;
+        align-items: center;
+        gap: 8%;
+        max-width: 785px;
+        margin-left: 5%;
+        width: 95%;
+        margin-top: 5%;
+        padding-right: 5%;
+    }
+    .statistic p{
+        width: 200px;
+    }
+    .statistic_right{
+        width: 80px;
+    }
+
+    .statistic_right p{
+        width: 50px;
+    }
+    .leftSide{
+        justify-content: space-between;
+    }
+    .rightSide{
+        justify-content: space-between;
+    }
+    .statistic{
+        color: white;
+        font-family: 'Formular';
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8%;
+        max-width: 785px;
+        margin-left: 5%;
+        font-size: 16px;
+        margin-bottom: 3%;
+    }
+    .statistic_bottom_sign{
+        color: #BDBDBD;
+        font-size: 12px;
+        margin-top: 5%;
+    
+    
+    }
+    
+    .bottomInscription{
+        margin-top: 10px;
+        color: #BDBDBD;
+        width: 50px;
+        font-size: 12px;
+    
+    }
+}
+
+.statisticCorrectMode{
+    background-color: #242424;
+    min-height: 40%;
+    width: 80%;
+    margin-left: 4%;
+    color: white;
+    font-family: 'Formular';
+    display: flex;
+    padding: 2.5%;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.statisticCorrectMode_left{
+    width: 40%;
+}
+.statisticCorrectMode_right{
+    width: 45%;
+    margin-left: 5%;
+}
+
+
+.title_left{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Formular';
+}
+
+.input_left{
+    display: flex;
+    gap: 20%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+
+.input_left_item p{
+    color: #BDBDBD;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.input_left_item input{
+    color: white;
+    border: none;
+    border-bottom: 1px solid white ;
+    background-color: #242424;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    font-family: 'Formular';
+    padding: 5% 5% 4.5% 0%;
+}
+
+.statisticCorrectMode_right{
+    display: flex;
+    flex-direction: column;
+    gap: 6%;
+
+}
+
+.statistic_item_title{
+    display: flex;
+    gap: 3%;
+    align-items: center;
+    margin-bottom: 5%;
+
+}
+
+.statistic_item_title_second{
+    display: flex;
+    gap: 3%;
+    align-items: center;
+    margin-bottom: 5%;
+    margin-top: 2.5%;
+    
+}
+
+
+.statistic_item_bottom_titleText{
+    color: #BDBDBD;
+    font-family: 'Formular';
+    font-size: 12px;
+    margin-bottom: 3%;
+}
+
+.item_info_wrapper{
+    display: flex;
+    width: 100%;
+}
+
+.statistic_item_bottom{
+    width: 50%;
+}
+
+
+@media (max-width: 800px) {
+    .statistic_item_bottom_titleText{
+        font-size: 10px;
+        margin-bottom: 10%;
+    }
+    
+    .statisticCorrectMode{
+        width: 100%;
+        padding: 5%;
+    }
+
+    .statisticCorrectMode_right{
+        width: 47%;
+        margin-left: 5%;
+        
+    }
+
+    .statisticCorrectMode_left{
+        width: 48%;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .profileName{
+        width: 100%;
+        margin-bottom: 1%;
+        margin-top: 3%;
+        display: flex;
+        gap: 15px;
+        color: white;
+        font-family: 'Formular';
+        justify-content: end;
+        align-items: end;
+    }
+    .statisticCorrectMode{
+        background-color: #242424;
+        height: 70%;
+        width: 98%;
+        margin-left: 4%;
+        color: white;
+        font-family: 'Formular';
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5% 10% 4% 8%;
+        font-size: 16px;
+    }
+    .statisticCorrectMode_right{
+        width: 100%;
+        margin-top: 5%;
+        height: 50%;
+        display: flex;
+        margin-left: 25%;
+    }
+    .statisticCorrectMode_left{
+        width: 100%;
+        align-items: start;
+        height: 50%;
+
+    }
+    .title_left{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5%;
+    }
+}
+
+/*
+@media (max-width: 450px) {
+    .statisticCorrectMode_left{
+        
+    }
+    .title_left{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .statisticCorrectMode_right{
+        width: 100%;
+        margin-top: 5%;
+        height: 60%;
+        margin-left: 5%;
+        display: flex;
+    align-items: center;    }
+    .statistic_item_title_second{
+        margin-bottom: 10%;
+
+    gap: 20%;
+    }
+    .statistic_item_title{
+        margin-bottom: 10%;
+        gap: 20%;
+        }
+
+    .item_info_wrapper{
+        gap: 50%;
+        width: 100%;
+    }
+
+}
+*/
+
+
+.registrationForm_button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: #181818;
+    color: #D5FF03;
+    line-height: 27px;
+    font-family: 'Formular';
+    font-size: 18px;
+    font-weight: 500;
+    border: 1px solid #D5FF03 ;
+    width: 30%;
+    min-width: 130px;
+    padding: 15px 15px 15px 20px;
+    
+    border-radius: 35px; 
+}
+
+.registrationForm_button:hover{
+    background-color: #D5FF03;
+    color: black;
+}
+
+@media (max-width: 800px) {
+
+
+
+}
+
+@media (max-width: 600px) {
+.registrationForm_button{
+    width: 20%;
+    font-size: 14px;
+    padding: 5px 5px 5px 10px;
+
+
+}
+
+    .statisticCorrectMode{
+        padding: 5%;
+        
+    }
+    .statisticCorrectMode_left{
+        align-items: start;
+        justify-content: start;
+        height: 64%;
+    }
+    .statisticCorrectMode_right{
+        width: 100%;
+        margin-left: 0px;
+        margin-top: 1%;
+    }
+    .title_left{
+        align-items: start;
+        justify-content: start;
+        margin-bottom: 1%;
+    }
+    .statistic_item_bottom_titleText{
+        margin: 1%;
+    }
+
+    .statistic_item_title_second{
+        margin-bottom: 2%;
+        margin-top: 2%;
+    }
+    .statistic_item_title{
+        margin-bottom: 2%;
+    }
+}
+
+/*@media (max-width: 480px) {
+
+    .registrationForm_button{
+        margin-left: 33%;
+        margin-top: 4%;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .registrationForm_button{
+        margin-left: 30%;
+        margin-top: 4%;
+    }
+
+}*/
+
+
+.button_wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
