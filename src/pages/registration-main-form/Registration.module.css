@@ -1,6 +1,8 @@
 .registrationForm{
     width: 100%; /* Заполнение всей ширины контейнера */
     height: 98%; /* Заполнение всей высоты контейнера */
+    min-width: 100%;
+    min-height: 98%;
     overflow-y: auto;
     margin-top: 2%;
     background-color: #181818;
@@ -10,12 +12,15 @@
 
     width: 100%; /* Заполнение всей ширины контейнера */
     height: 100%; /* Заполнение всей высоты контейнера */
-
+    min-width: 100%;
+    min-height: 100%;
     display: flex;
     align-items: center;
     /*justify-content: center;*/
     justify-content: center;
     gap: 10%;
+    min-height: 550px;
+
 }
 
 .logotype{

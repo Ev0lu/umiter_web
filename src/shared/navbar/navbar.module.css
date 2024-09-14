@@ -3,6 +3,8 @@
     overflow: hidden;
     width: 30%;
     height: 100%;
+    min-height: 550px;
+
     display: flex; /* Добавлено */
     flex-direction: column; /* Добавлено */
     background-color: #181818;

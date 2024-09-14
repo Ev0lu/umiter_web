@@ -228,7 +228,7 @@ const router = createBrowserRouter([
     element: <Suspense fallback={<Loader />}>
                 <CustomProfileCreation />
             </Suspense>,
-  },
+  }
 ]);
 
 function App() {
