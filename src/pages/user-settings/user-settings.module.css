@@ -23,7 +23,7 @@
 }
 
 .registrationForm_fields{
-    width: 100%; 
+    width: 70%; 
     margin-top: 2%;
     height: 100%;
     display: flex;
@@ -182,24 +182,6 @@ a {
     text-decoration: none;
 }
 
-@media (max-width: 900px) {
-    .logotype{
-        display: none;
-    }
-
-    .registrationForm_field__hasAccount{
-        margin-bottom: 40px;
-    }
-
-    .registrationForm_header h1{
-       font-size: 28px;
-    }
-    
-    .registrationForm_wrapper{
-        gap: 0%;
-
-    }
-}
 
 
 .error {
@@ -260,3 +242,116 @@ a {
     order: 2; /* Гарантирует, что последний элемент всегда будет последним */
     margin-left: auto; /* Прижимает элемент к правому краю */
 }
+
+
+
+@media (max-width: 900px) {
+    .logotype{
+        display: none;
+    }
+
+    .registrationForm_field__hasAccount{
+        margin-bottom: 40px;
+    }
+
+    .registrationForm_header h1{
+       font-size: 28px;
+    }
+    
+    .registrationForm_wrapper{
+        gap: 0%;
+
+    }
+}
+
+
+@media (max-width: 700px) {
+    .logotype{
+        display: none;
+    }
+
+    .registrationForm_field__hasAccount{
+        margin-bottom: 40px;
+    }
+
+    .registrationForm_header h1{
+       font-size: 20px;
+       width: 250px;
+    }
+
+    .registrationForm_button{
+        width: 250px;
+        padding: 10px;
+    }
+    
+    .registrationForm_wrapper{
+        gap: 0%;
+    
+
+    }
+        
+    .registrationForm_button_wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .registrationForm_field__input{
+        width: 250px;
+        font-size: 14px;
+    }
+
+    .deleteInput{
+        width: 250px;
+        font-size: 12px;
+        padding-left: 35px;
+    }
+}
+
+@media (max-width: 450px) {
+    .logotype{
+        display: none;
+    }
+
+    .registrationForm_field__hasAccount{
+        margin-bottom: 40px;
+    }
+
+    .registrationForm_header h1{
+       font-size: 20px;
+       width: 230px;
+    }
+
+    .registrationForm_button{
+        width: 200px;
+    }
+    
+    .registrationForm_wrapper{
+        gap: 0%;
+    
+
+    }
+        
+    .registrationForm_button_wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .registrationForm_button_wrapper{
+
+    }
+
+    .registrationForm_field__input{
+        width: 200px;
+        font-size: 14px;
+    }
+
+    .deleteInput{
+        width: 200px;
+        font-size: 10px;
+        padding-left: 35px;
+        padding-bottom: 8px;
+    }
+}
+

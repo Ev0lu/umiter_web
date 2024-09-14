@@ -325,9 +325,13 @@
     }
     .leftSide{
         justify-content: space-between;
+        width: 300px;
+        max-width: 70%;
     }
     .rightSide{
         justify-content: space-between;
+        width: 300px;
+        max-width: 40%;
     }
     .statistic{
         color: white;

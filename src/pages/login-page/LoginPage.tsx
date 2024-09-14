@@ -133,12 +133,12 @@ function LoginPage() {
                             <span className={s.registrationForm_field__hasAccountLink}>Регистрация</span>
                         </Link>
                     </div>     
-                    {/* <div className={s.registrationForm_field__hasAccount}>
+                    <div className={s.registrationForm_field__hasAccount}>
                         <span className={s.registrationForm_field__hasAccountText}>Забыли пароль?</span> 
                         <Link to='/login'>
                             <span className={s.registrationForm_field__hasAccountLink}>Восстановите пароль</span>
                         </Link>
-                    </div>   */}    
+                    </div>       
                 </div>
 
      

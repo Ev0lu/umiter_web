@@ -23,7 +23,7 @@
 }
 
 .registrationForm_fields{
-    width: 90%; 
+    width: 70%; 
     margin-top: 2%;
     height: 100%;
     display: flex;
@@ -296,7 +296,7 @@ a {
     }
 
     .registrationForm_header h1{
-        font-size: 28px;
+        font-size: 20px;
         width: 250px;
      }
     
