@@ -1,29 +1,41 @@
-.registrationForm{
+.userSettingsForm{
     width: 100%; /* Заполнение всей ширины контейнера */
     height: 100%; /* Заполнение всей высоты контейнера */
+    min-height: 100%;
+    min-width: 100%;
     overflow-y: auto;
     background-color: #181818;
+    overflow: visible;
+
 }
 
-.registrationForm_wrapper{
-
+.userSettingsForm_wrapper{
+    min-height: 100%;
+    min-width: 100%;
     width: 100%; /* Заполнение всей ширины контейнера */
     height: 100%; /* Заполнение всей высоты контейнера */
     display: flex;
     gap: 10%;
+    overflow: visible;
+
+    overflow-y: auto;
+
 }
+
 .logotype{
     user-select: none;
     pointer-events: none;
 }
 
-.registrationForm_wrapper{
+.userSettingsForm_wrapper{
     display: flex;
-    
 }
 
-.registrationForm_fields{
+.userSettingsForm_fields{
+    min-width: 70%;
     width: 70%; 
+    min-height: 650px;
+
     margin-top: 2%;
     height: 100%;
     display: flex;
@@ -31,11 +43,12 @@
     align-items: center;
     justify-content: center;
     gap: 5%;
+    overflow: visible;
+
 }
 
-.registrationForm_header h1{
+.userSettingsForm_header h1{
     text-align: center;
-
     width: 450px;
     font-family: 'Ultramono Wide Black';
     font-weight: 900;
@@ -46,7 +59,7 @@
     line-height: 100%;
 }
 
-.registrationForm_field__input{
+.userSettingsForm_field__input{
     padding: 16px;
     padding-left: 50px;
     width: 300px;
@@ -57,6 +70,8 @@
     outline: none;
     border-bottom: 1px solid #F6F6F6;
     position: relative;
+    overflow: visible;
+
 
 }
 
@@ -71,15 +86,17 @@
     outline: none;
     border-bottom: 1px solid #F6F6F6;
     position: relative;
+    overflow: visible;
+
 
 }
 
 
-.registrationForm_field{
+.userSettingsForm_field{
     position: relative;
 }
 
-.registrationForm_field_image__mail{
+.userSettingsForm_field_image__mail{
     user-select: none;
     position: absolute;
     left: 20px;
@@ -87,7 +104,7 @@
     z-index: 2;
 }
 
-.registrationForm_field__input__password{
+.userSettingsForm_field__input__password{
     padding: 16px;
     padding-left: 50px;
     width: 300px;
@@ -101,11 +118,11 @@
 
 }
 
-.registrationForm_field__password{
+.userSettingsForm_field__password{
     position: relative;
 }
 
-.registrationForm_field_image {
+.userSettingsForm_field_image {
     user-select: none;
     position: absolute;
     left: 20px;
@@ -113,12 +130,12 @@
     z-index: 2;
 }
 
-.registrationForm_field_image svg {
+.userSettingsForm_field_image svg {
     width: 100%; /* Заполнение всей ширины контейнера */
     height: 100%; /* Заполнение всей высоты контейнера */
 }
 
-.registrationForm_field_imageEye {
+.userSettingsForm_field_imageEye {
     user-select: none;
     position: absolute;
     right: 15px;
@@ -126,17 +143,17 @@
     cursor: pointer;
 }
 
-.registrationForm_field_imageEye svg {
+.userSettingsForm_field_imageEye svg {
     fill: #666;
     width: 100%; /* Заполнение всей ширины контейнера */
     height: 100%; /* Заполнение всей высоты контейнера */
 }
 
-.registrationForm_button_wrapper{
+.userSettingsForm_button_wrapper{
     margin-top: 5%;
 }
 
-.registrationForm_button{
+.userSettingsForm_button{
     cursor: pointer;
     border: none;
     outline: none;
@@ -152,16 +169,16 @@
     border-radius: 35px; 
 }
 
-.registrationForm_button:hover{
+.userSettingsForm_button:hover{
     background-color: #D5FF03;
     color: black;
 }
 
-.registrationForm_field__hasAccount{
+.userSettingsForm_field__hasAccount{
     margin-bottom: 30px;
 }
 
-.registrationForm_field__hasAccountText{
+.userSettingsForm_field__hasAccountText{
     color: white;
     margin-right: 10px;
     font-family: 'Formular';
@@ -169,7 +186,7 @@
     font-weight: 200;
 }
 
-.registrationForm_field__hasAccountLink{
+.userSettingsForm_field__hasAccountLink{
     color: #D5FF03;
     margin-right: 10px;
     font-size: 18px;
@@ -211,13 +228,13 @@ a {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
 }
 
-.registrationForm_field{
+.userSettingsForm_field{
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.registrationForm_field__password{
+.userSettingsForm_field__password{
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -250,15 +267,15 @@ a {
         display: none;
     }
 
-    .registrationForm_field__hasAccount{
+    .userSettingsForm_field__hasAccount{
         margin-bottom: 40px;
     }
 
-    .registrationForm_header h1{
+    .userSettingsForm_header h1{
        font-size: 28px;
     }
     
-    .registrationForm_wrapper{
+    .userSettingsForm_wrapper{
         gap: 0%;
 
     }
@@ -270,33 +287,33 @@ a {
         display: none;
     }
 
-    .registrationForm_field__hasAccount{
+    .userSettingsForm_field__hasAccount{
         margin-bottom: 40px;
     }
 
-    .registrationForm_header h1{
+    .userSettingsForm_header h1{
        font-size: 20px;
        width: 250px;
     }
 
-    .registrationForm_button{
+    .userSettingsForm_button{
         width: 250px;
         padding: 10px;
     }
     
-    .registrationForm_wrapper{
+    .userSettingsForm_wrapper{
         gap: 0%;
     
 
     }
         
-    .registrationForm_button_wrapper{
+    .userSettingsForm_button_wrapper{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .registrationForm_field__input{
+    .userSettingsForm_field__input{
         width: 250px;
         font-size: 14px;
     }
@@ -313,32 +330,32 @@ a {
         display: none;
     }
 
-    .registrationForm_field__hasAccount{
+    .userSettingsForm_field__hasAccount{
         margin-bottom: 40px;
     }
 
-    .registrationForm_header h1{
+    .userSettingsForm_header h1{
        font-size: 20px;
        width: 230px;
     }
 
-    .registrationForm_button{
+    .userSettingsForm_button{
         width: 200px;
     }
     
-    .registrationForm_wrapper{
+    .userSettingsForm_wrapper{
         gap: 0%;
     
 
     }
         
-    .registrationForm_button_wrapper{
+    .userSettingsForm_button_wrapper{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .registrationForm_field__input{
+    .userSettingsForm_field__input{
         width: 200px;
         font-size: 14px;
     }

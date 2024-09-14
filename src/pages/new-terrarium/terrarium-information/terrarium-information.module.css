@@ -1,7 +1,7 @@
 .registrationForm{
     width: 100%; /* Заполнение всей ширины контейнера */
     height: 100%; /* Заполнение всей высоты контейнера */
-
+    overflow-y:auto ;
     background-color: #181818;
 }
 
@@ -9,6 +9,7 @@
 
     width: 100%; /* Заполнение всей ширины контейнера */
     height: 100%; /* Заполнение всей высоты контейнера */
+    overflow-y:auto ;
 
     display: flex;
     align-items: center;
@@ -28,6 +29,9 @@
 }
 
 .registrationForm_fields{
+    min-height: 750px;
+    overflow-y:auto ;
+
     margin-top: 4%;
     height: 100%;
     display: flex;

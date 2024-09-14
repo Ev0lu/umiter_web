@@ -11,6 +11,8 @@
     width: 100%; /* Заполнение всей ширины контейнера */
     height: 100%; /* Заполнение всей высоты контейнера */
     align-items: center;
+    overflow-y: auto;
+
     justify-content: center;
     display: flex;
     gap: 10%;
@@ -23,11 +25,15 @@
 
 .registrationForm_wrapper{
     display: flex;
+
     
 }
 
 .registrationForm_fields{
     margin-top: 2%;
+    overflow-y: auto;
+    min-height: 750px;
+
     height: 100%;
     display: flex;
     flex-direction: column;

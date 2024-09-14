@@ -99,36 +99,36 @@ function UserSettings() {
     const navigate = useNavigate()
 
   return (
-  <div className={s.registrationForm}>
-      <div className={s.registrationForm_wrapper}>
+  <div className={s.userSettingsForm}>
+      <div className={s.userSettingsForm_wrapper}>
 
                 <Navbar />
 
-                <div className={s.registrationForm_fields}>
-                    <div className={s.registrationForm_header}>
+                <div className={s.userSettingsForm_fields}>
+                    <div className={s.userSettingsForm_header}>
                         <h1>НАСТРОЙКИ ПОЛЬЗОВАТЕЛЯ</h1>
                     </div>
-                    <div className={s.registrationForm_field}>
-                        <img className={`${s.registrationForm_field_image}`} src={nameFieldImage}></img>
+                    <div className={s.userSettingsForm_field}>
+                        <img className={`${s.userSettingsForm_field_image}`} src={nameFieldImage}></img>
                         <input value={name} readOnly={changeMode ? false : true}
-                        onChange={handleChangeName} className={`${s.registrationForm_field__input} ${errorFields.name && s.error}`} placeholder='имя'></input>
+                        onChange={handleChangeName} className={`${s.userSettingsForm_field__input} ${errorFields.name && s.error}`} placeholder='имя'></input>
                         {name === '' && (errorFields.name && <span className={s.error_message}>Пожалуйста, введите логин</span>)}
 
                     </div>
-                    <div className={s.registrationForm_field}>
-                        <img className={s.registrationForm_field_image} src={phoneFieldImage}></img>
+                    <div className={s.userSettingsForm_field}>
+                        <img className={s.userSettingsForm_field_image} src={phoneFieldImage}></img>
                         <input value={phone} readOnly={true}
-                        onChange={handlePhoneChange} className={`${s.registrationForm_field__input} ${errorFields.phone && s.error}`} placeholder='номер телефона'></input>
+                        onChange={handlePhoneChange} className={`${s.userSettingsForm_field__input} ${errorFields.phone && s.error}`} placeholder='номер телефона'></input>
                         {phone === '' && (errorFields.phone && <span className={s.error_message}>Пожалуйста, введите телефон</span>)}
                     </div>
-                    {/*<div className={s.registrationForm_field}>
-                        <img className={s.registrationForm_field_image__mail} src={mailFieldImage}></img>
+                    {/*<div className={s.userSettingsForm_field}>
+                        <img className={s.userSettingsForm_field_image__mail} src={mailFieldImage}></img>
                         <input value={mail}
-                        onChange={handleMailChange}  className={`${s.registrationForm_field__input} ${errorFields.mail && s.error}`} placeholder='почта'></input>
+                        onChange={handleMailChange}  className={`${s.userSettingsForm_field__input} ${errorFields.mail && s.error}`} placeholder='почта'></input>
                         {mail === '' && (errorFields.mail && <span className={s.error_message}>Пожалуйста, введите почту</span>)}
                     </div>*/}
   
-                    <div className={s.registrationForm_button_wrapper}>
+                    <div className={s.userSettingsForm_button_wrapper}>
                         <Link to={'/settings'}>
                             <button onClick={async () => {
                                 validateFields()
@@ -139,13 +139,13 @@ function UserSettings() {
                                     setChangeMode(true)
                                 }
 
-                                }} className={s.registrationForm_button}>{changeMode === true ? 'Сохранить' : 'Изменить'}</button>
+                                }} className={s.userSettingsForm_button}>{changeMode === true ? 'Сохранить' : 'Изменить'}</button>
                         </Link>
                         <p onClick={async () => {
                             await deleteUser()
                             navigate('/login')
                             }} className={s.deleteAccount}>Удалить аккаунт</p>  
-                        <div className={s.registrationForm_field}>
+                        <div className={s.userSettingsForm_field}>
                             <input value={password} 
                             onChange={(e) => setPassword(e.target.value)} className={`${s.deleteInput} ${errorFields.name && s.error}`} placeholder='Введите пароль для удаления'></input>
                         </div> 

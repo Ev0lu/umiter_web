@@ -248,7 +248,6 @@ a {
   }
 
 .registrationForm_button_camera{
-    position: absolute;
     cursor: pointer;
     border: none;
     outline: none;
