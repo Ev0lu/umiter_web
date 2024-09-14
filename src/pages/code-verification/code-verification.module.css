@@ -4,6 +4,8 @@
     min-height: 100%;
     min-width: 100%;
     background-color: #181818;
+    overflow-y: auto;
+
 }
 
 .registrationForm_wrapper{
@@ -17,6 +19,7 @@
     /*justify-content: center;*/
     justify-content: center;
     gap: 10%;
+
 }
 
 .logotype{
@@ -26,6 +29,8 @@
 
 .registrationForm_wrapper{
     display: flex;
+    min-height: 650px;
+
     
 }
 
