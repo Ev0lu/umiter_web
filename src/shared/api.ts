@@ -44,7 +44,7 @@ interface PhoneData {
 }
 
 export async function getPhoneCode(data: PhoneData) {
-    return await fetchApiResponse(`public/phone/verifications/call/requests`, {
+    return await fetchApiResponse(`public/phone/verifications/requests/call`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
