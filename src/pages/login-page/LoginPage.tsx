@@ -12,7 +12,6 @@ function LoginPage() {
     const [phone, setPhone] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [showPassword, setShowPassword] = useState<boolean>(false);
-    const [agreement, setAgreement] = useState<string>('false')
 
     useEffect(() => {
         if (password == '') {
@@ -113,18 +112,17 @@ function LoginPage() {
                         </div>
 
                     </div>    
-                    <div className={s.radio_gender}>
+                    {/*<div className={s.radio_gender}>
                         <input type="radio" id="agreement" name="agreement" value='true' checked={agreement === 'true'} onChange={(e) => setAgreement(e.target.value)} />
                         <span className={s.registrationForm_field__hasAccountText__agreement}>Я принимаю</span> 
                         <Link to='/login'>
                             <span className={s.registrationForm_field__hasAccountLink__agreement}>Правила и Соглашения</span>
-                        </Link>                    </div>
+                        </Link>                    </div>*/}
                     <div className={s.registrationForm_button_wrapper}>
                             <button onClick={() => {
                                 validateFields()
-                                if (agreement === 'true'){
-                                    loginUser()
-                                }
+                               loginUser()
+                                
                                 }} className={s.registrationForm_button}>Войти</button>
                     </div>
                     <div className={s.registrationForm_field__hasAccount}>

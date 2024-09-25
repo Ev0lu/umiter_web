@@ -58,6 +58,7 @@ export const Navbar = () => {
                     </div>
                     <div onClick={() => {
                             setToken('access', '')
+                            setToken('refresh', '')
                             navigate('/login')
                     }
                     } style={{width: isInscriptionHidden ? '65px' : '100%' }} className={`${s.navMenuLink}  ${isActive('/stats') ? s.active : ''}`}>
