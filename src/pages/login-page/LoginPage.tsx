@@ -128,7 +128,7 @@ function LoginPage() {
                                 }} className={s.registrationForm_button}>Войти</button>
                     </div>
                     <div className={s.registrationForm_field__hasAccount}>
-                        <span className={s.registrationForm_field__hasAccountText}>Уже есть аккаунт?</span> 
+                        <span className={s.registrationForm_field__hasAccountText}>Еще нет аккаунта?</span> 
                         <Link to='/add_terrarium'>
                             <span className={s.registrationForm_field__hasAccountLink}>Регистрация</span>
                         </Link>

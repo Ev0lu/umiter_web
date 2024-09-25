@@ -3,6 +3,7 @@ import umiterLogo from '../../assets/LOGO_varelmo.svg'
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import { checkCorrectCode, getPhoneCode } from '../../shared/api';
+import { setToken } from '../../App';
 
 
 
@@ -140,6 +141,41 @@ const checkCode = async () => {
 
     const [incorrectCode, setIncorrectCode] = useState(false)
 
+    const loginUser = async () => {  
+      let user = {
+          phoneNumber: sessionStorage.getItem('phone'), 
+          password: sessionStorage.getItem('password'), 
+          clientId: "web-app"
+      };
+    
+      try {
+        const response = await fetch('https://api.umiter.ru/v1/public/user/auth/password/token', {
+          method: 'POST',
+          headers: {
+            'accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(user)
+        });
+    
+        if (response.ok) {
+          const data = await response.json();
+          setToken('access', data.accessToken)
+          setToken('refresh', data.refreshToken)
+
+          return navigate("/terrarium_list")
+
+        } else {
+          return navigate("/login")
+
+        }
+    
+      } catch (error) {
+    
+      }
+    }
+  
+
 
     const registerUser = async () => {  
         let user = {
@@ -162,9 +198,8 @@ const checkCode = async () => {
 
           if (response.status === 201) {
             console.log('1')
-            console.log('2')
-
-            navigate("/terrarium_list")
+            console.log('2')  
+            await loginUser()
             console.log('3')
 
 
