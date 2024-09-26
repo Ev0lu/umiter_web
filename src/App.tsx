@@ -27,6 +27,8 @@ import TerrariumSettings from './pages/terrarium/terrarium-settings/terrarium-se
 import TerrariumSettingsInfo from './pages/terrarium/terrarium-settings-info/terrarium-settings-info';
 import UserSettings from './pages/user-settings/user-settings';
 import SupportService from './pages/support-service/support-service';
+import AddNewTerrariumInfo from './pages/new-terrarium/add-new-terrarium-info/add-new-terrarium-info';
+import AddTerrariumQRInfo from './pages/add-terrarium-qr-info/add-terrarium-qr-info';
 
 
 
@@ -141,6 +143,12 @@ const router = createBrowserRouter([
         </Suspense>,
   },
   {
+    path: "/add_terrarium/info",
+    element: <Suspense fallback={<Loader />}>
+                <AddTerrariumQRInfo />
+            </Suspense>,
+  },
+  {
     path: "/login",
     element: <Suspense fallback={<Loader />}>
                 <LoginPage />
@@ -227,6 +235,13 @@ const router = createBrowserRouter([
     loader: sessionLoader,
     element: <Suspense fallback={<Loader />}>
                 <CustomProfileCreation />
+            </Suspense>,
+  }, 
+  {
+    path: "/new_terrarium/info",
+    loader: sessionLoader,
+    element: <Suspense fallback={<Loader />}>
+                <AddNewTerrariumInfo />
             </Suspense>,
   }
 ]);

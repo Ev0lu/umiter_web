@@ -1,37 +1,31 @@
 
 .newTerrariumForm{
-    min-height: 100%;
-    min-width: 100%;
     width: 100%;
     height: 100%;
-    overflow: visible;
-    overflow-y: auto;
+    min-height: 100%;
+    min-width: 100%;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 
 .newTerrariumForm_wrapper{
     display: flex;
-
-    min-height: 100%;
-    min-width: 100%;
     width: 100%;
     height: 100%;
- 
+    min-height: 100%;
+    min-width: 100%;
     overflow-y: auto;
+
 }
 
 
 
 
 .rightQR_side{
-    overflow-y: auto;
-
-    min-height: 100%;
-    min-width: 100%;
     background-color: black;
-    width: 100%;
+    width: 70%;
     height: 100%;
-
+    min-height: 650px;
     display: flex; /* Добавлено */
     flex-direction: column; /* Добавлено */
 
@@ -39,14 +33,11 @@
 }
 
 .rightQR_side_wrapper{
-    overflow-y: auto;
-
-    min-height: 650px;
-    min-width: 100%;
+    min-height: 100%;
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 2%;
     padding: 3% 10% 3% 10%;
@@ -239,14 +230,14 @@ a {
 
   #qrCodeContainer {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 230px;
+    height: 190px;
     border-radius: 7px;
     overflow: hidden;
   }
   .rightQR_side_photoIcon{
-    width: 300px;
-    height: 300px;
+    width: 230px;
+    height: 190px;
 
   }
   #qr-shaded-region {

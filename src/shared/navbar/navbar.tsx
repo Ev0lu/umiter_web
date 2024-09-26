@@ -42,7 +42,7 @@ export const Navbar = () => {
                         <img src={terr} alt="Terrariums" />
                         <p style={{ display: isInscriptionHidden ? 'none' : 'block' }}>Террариумы</p>
                     </div>
-                    <div onClick={() => {navigate('/new_terrarium')}} style={{width: isInscriptionHidden ? '65px' : '100%' }} className={`${s.navMenuLink}  ${isActive('/new_terrarium') ? s.active : ''}`}>
+                    <div onClick={() => {navigate('/new_terrarium/info')}} style={{width: isInscriptionHidden ? '65px' : '100%' }} className={`${s.navMenuLink}  ${isActive('/new_terrarium') ? s.active : ''}`}>
                             <img src={terrarium} alt="Graphics" />
                             <p style={{ display: isInscriptionHidden ? 'none' : 'block'}}>Добавить терр.</p>  
                     </div>

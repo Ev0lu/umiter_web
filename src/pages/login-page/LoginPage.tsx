@@ -127,7 +127,7 @@ function LoginPage() {
                     </div>
                     <div className={s.registrationForm_field__hasAccount}>
                         <span className={s.registrationForm_field__hasAccountText}>Еще нет аккаунта?</span> 
-                        <Link to='/add_terrarium'>
+                        <Link to='/add_terrarium/info'>
                             <span className={s.registrationForm_field__hasAccountLink}>Регистрация</span>
                         </Link>
                     </div>     

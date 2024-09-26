@@ -37,7 +37,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 2%;
     padding: 3% 10% 3% 10%;
@@ -230,14 +229,14 @@ a {
 
   #qrCodeContainer {
     position: relative;
-    width: 230px;
-    height: 190px;
+    width: 300px;
+    height: 300px;
     border-radius: 7px;
     overflow: hidden;
   }
   .rightQR_side_photoIcon{
-    width: 230px;
-    height: 190px;
+    width: 300px;
+    height: 300px;
 
   }
   #qr-shaded-region {
@@ -246,6 +245,7 @@ a {
     height: 300px;
     border-width: 50px !important;
   }
+
 
 .registrationForm_button_camera{
     cursor: pointer;

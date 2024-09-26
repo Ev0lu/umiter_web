@@ -226,7 +226,7 @@ const checkCode = async () => {
                         <h1>ПОДТВЕРЖДЕНИЕ</h1>
                     </div>
                     <div className={s.header_text}>
-                        <p>Код был отправлен на телефон</p>
+                        <p>Введите последние 4 цифры входящего номера телефона</p>
                         <p>{`${sessionStorage.getItem('phone')}`}</p>
                     </div>  
                     <div className={s.code_verification}>
