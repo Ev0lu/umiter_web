@@ -19,6 +19,7 @@ function ProfilesPage() {
       if (response.ok) {
           const data = await response.json()
           setProfiles(data.profiles)
+          console.log(data.profiles)
           setFilteredProfiles(data.profiles)
       }
   }
@@ -137,7 +138,7 @@ function ProfilesPage() {
                                                           <input value={name}
                         onChange={(e) => {setName(e.target.value)}} className={`${s.registrationForm_field__input}`}  placeholder='Или введите название и нажмите на другое'></input>
 
-                              <div onClick={() => {
+                              <div  onClick={() => {
                                 if (name !== ''){
                                   sessionStorage.setItem('name', name)
                                   sessionStorage.setItem('terrariumId', terrariumId)

@@ -86,13 +86,18 @@ useEffect(() => {
                                         <p>Воздух</p>
                                     </div>
                                     <div className={s.statistic_bottom_sign}>
-                                        <p>Диапазон температур</p>
+                                        <p>Диапазон температур в нижнем углу</p>
+                                    </div>
+                                    <div className={s.statistic_bottom_sign}>
+                                        <p>Диапазон температур в верхнем углу</p>
                                     </div>
                                 </div>
                                  
                                 <div className={s.statistic_right}>
                                     <p>{terrarium.length > 0 && terrarium[0] !== 'null' ? `${terrarium[0].indicators.temperature_cold} - ${terrarium[0].indicators.temperature_hot}` : '-' } °C </p>
-                                    <p className={s.bottomInscription}>{terrarium.length > 0 ? terrarium[1].settings.temperature_hot_night : '-'}-{terrarium.length > 0 ? terrarium[1].settings.temperature_hot_day : '-'}</p>
+                                    <p className={s.bottomInscription}>{terrarium.length > 0 ? terrarium[1].settings.temperature_cold_night : '-'}-{terrarium.length > 0 ? terrarium[1].settings.temperature_cold_day : '-'}°C</p>
+                                    <p className={s.bottomInscription}>{terrarium.length > 0 ? terrarium[1].settings.temperature_hot_night : '-'}-{terrarium.length > 0 ? terrarium[1].settings.temperature_hot_day : '-'}°C</p>
+
                                 </div>
                                 
                             </div>
@@ -108,8 +113,7 @@ useEffect(() => {
                                 </div>
                                 <div className={s.statistic_right}>
                                     <p>{terrarium.length > 0 && terrarium[0] !== 'null' ?  `${terrarium[0].indicators.humidity_cold} - ${terrarium[0].indicators.humidity_hot}` : '-' } %</p>
-                                    <p className={s.bottomInscription}>0-100%</p>
-                                </div>
+                                    <p className={s.bottomInscription}>{terrarium.length > 0 ? terrarium[1].settings.humidity_min : '-'}-{terrarium.length > 0 ? terrarium[1].settings.humidity_max : '-'}%</p>                                </div>
                             </div>
                             <div className={s.statistic}>
                                 <div className={s.statistic_left}>

@@ -9,9 +9,10 @@ import { setToken } from '../../App'
 
 function LoginPage() {
     const navigate = useNavigate()
-    const [phone, setPhone] = useState<string>('');
+    const [phone, setPhone] = useState<string>('+7');
     const [password, setPassword] = useState<string>('');
     const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [responsePassword, setResponsePassword] = useState<boolean>(false);
 
     useEffect(() => {
         if (password == '') {
@@ -67,8 +68,11 @@ function LoginPage() {
             return navigate("/terrarium_list")
 
           } else {
-            return navigate("/login")
-
+            //return navigate("/login")
+            setPassword('')
+            setPhone('+7')
+            setResponsePassword(true)
+            
           }
       
         } catch (error) {
@@ -108,6 +112,7 @@ function LoginPage() {
 
                         <div className={s.password_form__bottom}>
                                 { password === '' && (errorFields.password && <span className={s.error_message}>Пожалуйста, введите пароль</span>)}
+                                { password === '' && (responsePassword && <span className={s.error_message}>Введине правильные данные</span>)}
                                 <p className={s.passwordCharsCount}>{`${password.length}`}/10</p>
                         </div>
 

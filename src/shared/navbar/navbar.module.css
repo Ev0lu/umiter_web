@@ -3,11 +3,9 @@
     width: 30%;
     height: 100%;
     min-height: 650px;
-
     display: flex; /* Добавлено */
     flex-direction: column; /* Добавлено */
     background-color: #181818;
-
 }
 
 .navbar_side_wrapper{

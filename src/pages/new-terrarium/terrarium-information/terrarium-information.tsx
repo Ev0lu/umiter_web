@@ -34,7 +34,20 @@ function TerrariumInfo() {
       };
       const response = await getTimezones(token)
       const data = await response.json()
-      setTimezones(Object.entries(data))
+      const formatTime = (zone, dateTime) => {
+        const date = new Date(dateTime);
+        const offset = dateTime.includes('Z') ? 'UTC+00:00' : `UTC${dateTime.slice(-6)}`;
+      
+        const hours = date.getUTCHours();
+        const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+        const formattedTime = `${hours}:${minutes}`;
+      
+        return `${zone} ${formattedTime} ${offset}`;
+      };
+      const formattedTimezones = Object.entries(data).map(([zone, dateTime]) => formatTime(zone, dateTime));
+      // Установка состояния
+      setTimezones(formattedTimezones);
+
     }
 
     useEffect(() => {
@@ -64,7 +77,7 @@ function TerrariumInfo() {
                           <option value=''>Выберите таймзону</option>
                           {timezones && timezones.map((item) => (
 
-                             <option style={{width: '300px'}} value={`${item[0]}`}>{item[0]} {item[1]}</option>
+                             <option style={{width: '300px'}} value={`${item.split(' ')[0]}`}>{item}</option>
 
                           ))}
                         </select>

@@ -58,7 +58,7 @@ function TerrariumList() {
               }
            })
       );
-    
+        console.log(terrariumsWithLogs)
         setTerrariumList(terrariumsWithLogs)
         } else {
           return navigate('/login')
@@ -109,7 +109,7 @@ function TerrariumList() {
                                     <h2>{terrarium[0][0].name}</h2>
                                     <div className={s.leftSide_temperature}>
                                         <img src={temperature}></img>
-                                        <p>{terrarium[1].temperature_cold ? `${terrarium[1].indicators.temperature_cold} - ${terrarium[1].indicators.temperature_hot}` : '-' } °C </p>
+                                        <p>{terrarium[1].indicators && terrarium[1].indicators.temperature_cold ? `${terrarium[1].indicators.temperature_cold} - ${terrarium[1].indicators.temperature_hot}` : '-' } °C </p>
                                         </div>
                                     </div>
                                 </div>
@@ -120,7 +120,7 @@ function TerrariumList() {
                                     
                                     <div className={s.rightSide_humidity}>
                                         <img src={wet} ></img>
-                                        <p>{terrarium[1].humidity_cold ? `${terrarium[1].indicators.humidity_cold} - ${terrarium[1].indicators.humidity_hot}` : '-' } %</p>
+                                        <p>{terrarium[1].indicators && terrarium[1].indicators.humidity_cold ? `${terrarium[1].indicators.humidity_cold} - ${terrarium[1].indicators.humidity_hot}` : '-' } %</p>
                                     </div>
                                 </div>
                                 </Link>

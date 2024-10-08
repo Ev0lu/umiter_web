@@ -322,8 +322,8 @@ a {
 
 @media (max-width: 720px) {
     .rightQR_side_photoIcon{
-        width: 180px;
-        height: 120px;
+        width: 300px;
+        height: 300px;
     }
     #qr-shaded-region {
 
