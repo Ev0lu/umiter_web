@@ -2,7 +2,7 @@
 .menuOverlay {
     position: fixed;
     top: 0;
-    left: 25%; /* Начало overlay с правой стороны меню */
+    left: 0%; /* Начало overlay с правой стороны меню */
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -368,7 +368,7 @@ a {
       }
       
       .menuOpen {
-        width: 25%; /* Меню выезжает на 70% экрана */
+        width: 35%; /* Меню выезжает на 70% экрана */
       }
     .burgerMenuIcon {
       display: flex;
@@ -383,7 +383,7 @@ a {
     }
   
     .menuOpen {
-        width: 25%; /* Настроить ширину при открытии меню */
+        width: 35%; /* Настроить ширину при открытии меню */
     }
   }
   
