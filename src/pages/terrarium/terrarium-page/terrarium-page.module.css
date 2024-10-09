@@ -138,6 +138,10 @@
     cursor: pointer;
 }
 
+.statisticChangeMode{
+    width: 100%;
+}
+
 .statistic{
     color: white;
     font-family: 'Formular';
@@ -145,10 +149,10 @@
     justify-content: space-between;
     align-items: center;
     gap: 8%;
-    max-width: 785px;
     margin-left: 5%;
     font-size: 22px;
     margin-bottom: 3%;
+    width: 100%;
 }
 
 .statistic_bottom_sign{
@@ -160,7 +164,7 @@
 .bottomInscription{
     margin-top: 10px;
     color: #BDBDBD;
-    width: 50px;
+    width: 200px;
     font-size: 12px;
 }
 
@@ -233,6 +237,16 @@
     align-items: center;
     
 }
+
+.statistic_left{
+    width: 75%;
+}
+
+.statistic_right{
+    width: 25%;
+}
+
+
 .rightSide h1{
     margin-right: 30px;    
 }
@@ -275,7 +289,7 @@
     .bottomInscription{
         margin-top: 10px;
         color: #BDBDBD;
-        width: 50px;
+        width: 200px;
         font-size: 12px;
     
     }
@@ -309,7 +323,7 @@
     .bottomInscription{
         margin-top: 10px;
         color: #BDBDBD;
-        width: 50px;
+        width: 200px;
         font-size: 12px;
     
     }
@@ -342,11 +356,11 @@
         width: 200px;
     }
     .statistic_right{
-        width: 80px;
+        width: 100%;
     }
 
     .statistic_right p{
-        width: 50px;
+        width: 100%;
     }
     .leftSide{
         justify-content: space-between;
@@ -381,7 +395,7 @@
     .bottomInscription{
         margin-top: 10px;
         color: #BDBDBD;
-        width: 50px;
+        width: 200px;
         font-size: 12px;
     
     }
