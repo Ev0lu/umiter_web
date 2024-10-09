@@ -1,4 +1,15 @@
 
+.menuOverlay {
+    position: fixed;
+    top: 0;
+    left: 25%; /* Начало overlay с правой стороны меню */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    cursor: pointer;
+  }
+
 .newTerrariumForm{
     width: 100%;
     height: 100%;
@@ -19,11 +30,17 @@
 }
 
 
+.leftMenu_side{
+    width: 25%;
+}
 
+.leftMenu_side_wrapper{
+    height: 100%;
+}
 
 .rightQR_side{
     background-color: black;
-    width: 70%;
+    width: 100%;
     height: 100%;
     min-height: 650px;
     display: flex; /* Добавлено */
@@ -313,14 +330,22 @@ a {
 
 @media (max-width: 720px) {
     .rightQR_side_photoIcon{
-        width: 250px;
-        height: 250px;
+        width: 300px;
+        height: 450px;
     }
     #qr-shaded-region {
 
         width: 280px;
-        height: 280px;
+        height: 480px;
         border-width: 50px !important;
+      }
+
+    #qrCodeContainer {
+        position: relative;
+        width: 300px;
+        height: 450px;
+        border-radius: 7px;
+        overflow: hidden;
       }
       
     .registrationForm_button_camera{
@@ -346,3 +371,59 @@ a {
 
 
 }
+
+
+@media (max-width: 800px) {
+
+
+    .burgerMenuIcon {
+        display: none;
+        cursor: pointer;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+      }
+      
+      .burgerLine {
+        width: 100%;
+        height: 3px;
+        background-color: white;
+      }
+      
+      /* Скрываем левое меню по умолчанию */
+      .leftMenu_side {
+        width: 0;
+        overflow: hidden;
+        height: 100%;
+        background-color: #181818;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        transition: width 0.3s ease; /* Плавный переход */
+      }
+      
+      .menuOpen {
+        width: 25%; /* Меню выезжает на 70% экрана */
+      }
+    .burgerMenuIcon {
+      display: flex;
+    }
+  
+    .leftMenu_side {
+      width: 0;
+    }
+  
+    .rightQR_side {
+        width: 100%;
+    }
+  
+    .menuOpen {
+        width: 25%; /* Настроить ширину при открытии меню */
+    }
+  }
+  
