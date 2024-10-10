@@ -84,16 +84,16 @@ const getUserName = async () => {
                       <div className={s.rightQR_side_wrapper}>
                         <div className={s.profileName}>
                             <img src=''></img>
-                            <p>{userName}</p>
+                            <p>{userName.length > 7 ? userName.slice(0, 7) + '...' : userName}</p>
                             <img src={down_big}></img>
                         </div>
                         <div className={s.pageTitle}>
                             <div className={s.leftSide}>
-                                <h1>{terrarium.length > 0 ? terrarium[1].name : '-' }</h1>
+                                <h1>{terrarium.length > 0 ? terrarium[1].name.length > 7 ? terrarium[1].name.slice(0, 7) + '...' : terrarium[1].name : '-' }</h1>
                                 {/* <img src={pencil}></img> */}
                             </div>
                             <div className={s.rightSide}>
-                                <h1>{terrarium.length > 0 ? terrarium[1].profileName : '-' }</h1>
+                                <h1>{terrarium.length > 0 ? terrarium[1].profileName.length > 12 ? terrarium[1].profileName.slice(0, 12) + '...' : terrarium[1].profileName : '-' }</h1>
                                 <img onClick={() => navigate('settings')} src={settingsTerrarium}></img>
                             </div>
                             

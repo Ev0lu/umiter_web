@@ -8,6 +8,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
     cursor: pointer;
+
   }
 
 
@@ -66,7 +67,6 @@
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    overflow-y: auto;
 
 }
 
@@ -74,29 +74,28 @@
     display: flex;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
 
 }
 
 .rightQR_side{
     background-color: #181818;
-    width: 70%;
+    width: 75%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    min-height: 650px;
     overflow-y: auto;
 
 
 }
 
 .rightQR_side_wrapper{
-    height: 90%;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 2%;
     padding: 3% 5% 2% 2%;
+    overflow-y: auto;
 
     
 }
@@ -192,17 +191,15 @@
 }
 
 .pageTitle{
-    height: 8%;
     color: #D5FF03;
     font-family: 'Ultramono Wide Black';
-    font-size: 8px;
+    font-size: 6px;
     margin-left: 4%;
     margin-bottom: 4%;
 }
 
 .leftSide{
     max-width: 100%;
-    overflow: hidden;
     max-width: 40%;
     display: flex;
     justify-content: center;
@@ -229,7 +226,6 @@
 .rightSide{
     max-width: 100%;
 
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
