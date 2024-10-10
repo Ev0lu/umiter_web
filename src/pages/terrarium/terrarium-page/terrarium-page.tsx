@@ -143,7 +143,7 @@ const getUserName = async () => {
                                     </div>
                                 </div>
                                 <div className={s.statistic_right}>
-                                    <p>{terrarium.length > 0  ? (terrarium[1].settings.light_start_time.split(':')[0] + ':' + terrarium[1].settings.light_start_time.split(':')[1] ) : '-'} {terrarium.length > 0 ? (terrarium[1].settings.light_stop_time.split(':')[0] + ':' + terrarium[1].settings.light_stop_time.split(':')[1] ) : '-'}</p>
+                                    <p className={s.time}>{terrarium.length > 0  ? (terrarium[1].settings.light_start_time.split(':')[0] + ':' + terrarium[1].settings.light_start_time.split(':')[1] ) : '-'} {terrarium.length > 0 ? (terrarium[1].settings.light_stop_time.split(':')[0] + ':' + terrarium[1].settings.light_stop_time.split(':')[1] ) : '-'}</p>
                                 </div>
                             </div>
                         </div>

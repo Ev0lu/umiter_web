@@ -20,16 +20,17 @@ function TerrariumSettingsInfo() {
       };
       const response = await getTimezones(token)
       const data = await response.json()
+      console.log(data)
       const formatTime = (zone, dateTime) => {
-        const date = new Date(dateTime);
+        // Получаем только время (часы и минуты)
+        const time = dateTime.split('T')[1].split(':').slice(0, 2).join(':');
+      
+        // Получаем смещение
         const offset = dateTime.includes('Z') ? 'UTC+00:00' : `UTC${dateTime.slice(-6)}`;
       
-        const hours = date.getUTCHours();
-        const minutes = date.getUTCMinutes().toString().padStart(2, '0');
-        const formattedTime = `${hours}:${minutes}`;
-      
-        return `${zone} ${formattedTime} ${offset}`;
-      };
+        return `${zone} ${time} ${offset}`;
+    };
+
       const formattedTimezones = Object.entries(data).map(([zone, dateTime]) => formatTime(zone, dateTime));
       // Установка состояния
       setTimezones(formattedTimezones);

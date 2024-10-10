@@ -164,7 +164,6 @@
 .bottomInscription{
     margin-top: 10px;
     color: #BDBDBD;
-    width: 200px;
     font-size: 12px;
 }
 
@@ -229,7 +228,6 @@
 
 .rightSide{
     max-width: 100%;
-    max-width: 40%;
 
     overflow: hidden;
     display: flex;
@@ -330,6 +328,10 @@
 }
 
 @media (max-width: 700px) {
+    .time{
+        font-size: 12px;
+    }
+    
     .pageTitle{
         flex-direction: column;
         gap: 20px;
@@ -355,9 +357,7 @@
     .statistic p{
         width: 200px;
     }
-    .statistic_right{
-        width: 100%;
-    }
+
 
     .statistic_right p{
         width: 100%;
@@ -367,11 +367,7 @@
         width: 300px;
         max-width: 70%;
     }
-    .rightSide{
-        justify-content: space-between;
-        width: 300px;
-        max-width: 40%;
-    }
+
     .statistic{
         color: white;
         font-family: 'Formular';
@@ -525,6 +521,7 @@
 
 
 @media (max-width: 600px) {
+
 
     .profileName{
         width: 100%;

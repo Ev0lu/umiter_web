@@ -72,9 +72,17 @@ line-height: 36px;
 color: #D5FF03;
 }
 
+a{
+    color: #D5FF03;
+
+}
+
+.rightQR_side_desciption p {
+    margin-bottom: 20px;
+}
+
 .rightQR_side_desciption{
     
-    text-align: center;
     max-width: 800px;
 }
 
