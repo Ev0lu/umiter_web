@@ -49,12 +49,32 @@ const createTerrariumProfile = async () => {
   const [humidityDay, setHumidityDay] = useState('')
   const [humidityNight, setHumidityNight] = useState('')
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const [counterDay, setCounterDay] = useState(0)
+  const [counterNight, setCounterNight] = useState(0)
+
 
   return (
   <div className={s.newTerrariumForm}>
         <div className={s.newTerrariumForm_wrapper}>
+        <div className={s.burgerMenuIcon} onClick={toggleMenu}>
+                <div className={s.burgerLine}></div>
+                <div className={s.burgerLine}></div>
+                <div className={s.burgerLine}></div>
+              </div>
 
-                <Navbar />
+              {/* Навигационное меню */}
+              <div className={`${s.leftMenu_side} ${menuOpen ? s.menuOpen : ''}`}>
+                <div className={s.leftMenu_side_wrapper}>
+                  <Navbar />
+                </div>
+              </div>
+              {menuOpen && <div className={s.menuOverlay} onClick={toggleMenu}></div>}
                 <div className={s.rightQR_side}>
                       <div className={s.rightQR_side_wrapper}>
                         <div className={s.pageTitle}>
@@ -72,23 +92,19 @@ const createTerrariumProfile = async () => {
                                         <input value={temperatureHotDay} onChange={(e) => {
 
 
-                                              if (e.target.value.includes('.') || e.target.value === '') {
-                                                setTemperatureHotDay(e.target.value);
-                                              } else if (e.target.value.split('').length === 2) {
-                                                setTemperatureHotDay( e.target.value + '.');
-                                              } else {
                                                 setTemperatureHotDay(e.target.value);
 
-                                              }
+                                              
                                               // Если значение целое, добавляем ".0" в конце
                                             
-                                            }} placeholder='36.8' maxLength={4} />
+                                            }} placeholder='36' maxLength={2} />
                                     </div>
                                     <div className={s.input_left_item}>
                                         <p>Ночь</p>
-                                        <input value={temperatureHotNight} maxLength={4} onChange={(e) => {
+                                        <input value={temperatureHotNight} maxLength={2} onChange={(e) => {
+                                            setTemperatureHotNight(e.target.value);
 
-
+/*
                                         if (e.target.value.includes('.') || e.target.value === '') {
                                             setTemperatureHotNight(e.target.value);
                                         } else if (e.target.value.split('').length === 2) {
@@ -96,10 +112,10 @@ const createTerrariumProfile = async () => {
                                         } else {
                                             setTemperatureHotNight(e.target.value);
 
-                                        }
+                                        }*/
                                         // Если значение целое, добавляем ".0" в конце
 
-                                        }} placeholder='31.0' />
+                                        }} placeholder='31' />
                                     </div>
                                 </div>
                                 <p className={s.input_left_second__title}>Нижний угол</p>
@@ -107,36 +123,37 @@ const createTerrariumProfile = async () => {
                                     <div className={s.input_left_item}>
                                         <p>День</p>
                                         <input value={temperatureColdDay} onChange={(e) => {
+                                            setTemperatureColdDay(e.target.value);
 
+                                            //   if (e.target.value.includes('.') || e.target.value === '') {
+                                            //     setTemperatureColdDay(e.target.value);
+                                            //   } else if (e.target.value.split('').length === 2) {
+                                            //     setTemperatureColdDay( e.target.value + '.');
+                                            //   } else {
+                                            //     setTemperatureColdDay(e.target.value);
 
-                                              if (e.target.value.includes('.') || e.target.value === '') {
-                                                setTemperatureColdDay(e.target.value);
-                                              } else if (e.target.value.split('').length === 2) {
-                                                setTemperatureColdDay( e.target.value + '.');
-                                              } else {
-                                                setTemperatureColdDay(e.target.value);
-
-                                              }
+                                            //   }
                                               // Если значение целое, добавляем ".0" в конце
                                             
-                                            }} placeholder='36.8' maxLength={4} />
+                                            }} placeholder='36' maxLength={2} />
                                     </div>
                                     <div className={s.input_left_item}>
                                         <p>Ночь</p>
-                                        <input value={temperatureColdNight} maxLength={4} onChange={(e) => {
+                                        <input value={temperatureColdNight} maxLength={2} onChange={(e) => {
 
+                                           setTemperatureColdNight(e.target.value);
 
-                                        if (e.target.value.includes('.') || e.target.value === '') {
-                                            setTemperatureColdNight(e.target.value);
-                                        } else if (e.target.value.split('').length === 2) {
-                                            setTemperatureColdNight( e.target.value + '.');
-                                        } else {
-                                            setTemperatureColdNight(e.target.value);
+                                        // if (e.target.value.includes('.') || e.target.value === '') {
+                                        //     setTemperatureColdNight(e.target.value);
+                                        // } else if (e.target.value.split('').length === 2) {
+                                        //     setTemperatureColdNight( e.target.value + '.');
+                                        // } else {
+                                        //     setTemperatureColdNight(e.target.value);
 
-                                        }
+                                        // }
                                         // Если значение целое, добавляем ".0" в конце
 
-                                        }} placeholder='31.0' />
+                                        }} placeholder='31' />
                                     </div>
                                 </div>
 
@@ -148,11 +165,11 @@ const createTerrariumProfile = async () => {
 
 
                                               setHumidityNight(e.target.value)
-                                            }} placeholder='31' maxLength={4} />
+                                            }} placeholder='31' maxLength={2} />
                                     </div>
                                     <div className={s.input_left_item}>
                                         <p>Максимум</p>
-                                        <input value={humidityDay} maxLength={4} onChange={(e) => {
+                                        <input value={humidityDay} maxLength={2} onChange={(e) => {
                                               setHumidityDay(e.target.value)
 
                                         }} placeholder='70' />
@@ -166,28 +183,30 @@ const createTerrariumProfile = async () => {
                                         <input value={startTime} maxLength={5} onChange={(e) => {
 
 
-                                        if (e.target.value.includes(':') || e.target.value === '') {
+                                        if (e.target.value.includes(':') || e.target.value === '' || counterDay > 0) {
                                             setStartTime(e.target.value);
-                                        } else if (e.target.value.split('').length === 2) {
+                                        } else if (e.target.value.split('').length === 2  && counterDay === 0) {
 
                                             setStartTime( e.target.value + ':');
+                                            setCounterDay(1)
+
                                         } else {
                                             setStartTime(e.target.value);
 
                                         }
-                                        // Если значение целое, добавляем ".0" в конце
 
-                                        }} placeholder='12:00' />
+                                        }} placeholder='07:00' />
                                     </div>
                                     <div className={s.input_left_item}>
                                         <p>Конец</p>
                                         <input value={endTime} maxLength={5} onChange={(e) => {
 
 
-                                        if (e.target.value.includes(':') || e.target.value === '') {
+                                        if (e.target.value.includes(':') || e.target.value === '' || counterNight > 0) {
                                             setEndTime(e.target.value);
-                                        } else if (e.target.value.split('').length === 2) {
+                                        } else if (e.target.value.split('').length === 2 && counterNight === 0) {
                                             setEndTime( e.target.value + ':');
+                                            setCounterNight(1)
                                         } else {
                                             setEndTime(e.target.value);
                                         }
