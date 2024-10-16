@@ -303,6 +303,16 @@ a{
   
   @media (max-width: 800px) {
 
+    .grid_container {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        padding-right: 0%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 0%;
+        margin: 0 auto;
+        overflow-y: auto;
+    }
 
     .burgerMenuIcon {
         display: none;
@@ -336,7 +346,7 @@ a{
       }
       
       .menuOpen {
-        width: 35%; /* Меню выезжает на 70% экрана */
+        width: 75%; /* Меню выезжает на 70% экрана */
       }
     .burgerMenuIcon {
       display: flex;
@@ -351,7 +361,7 @@ a{
     }
   
     .menuOpen {
-        width: 35%; /* Настроить ширину при открытии меню */
+        width: 75%; /* Настроить ширину при открытии меню */
     }
   }
   

@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import temperature from '../../../assets/temperature.svg'
 import { Navbar } from '../../../shared/navbar/navbar';
-import { createProfile } from '../../../shared/api'
+import { createProfile, refreshTokens, setTerrariumProfile } from '../../../shared/api'
 import { useNavigate } from 'react-router-dom'
 import { getToken } from '../../../App'
 
@@ -20,7 +20,7 @@ const createTerrariumProfile = async () => {
             navigate('/login')
     };
     const data = {
-        "name": sessionStorage.getItem('name'),
+        "name": name,
         "terId": sessionStorage.getItem('terrariumId') ? sessionStorage.getItem('terrariumId') : localStorage.getItem('terrariumToChange'),
          "settings": {
             "temperature_hot_night": temperatureHotNight,
@@ -36,9 +36,39 @@ const createTerrariumProfile = async () => {
     }
     const response = await createProfile(token, data)
     if (response.ok) {
-        navigate('/select_profile')
+        const data = await response.json()
+        connectProfile(data.profileId)
+        navigate(`/terrarium/${sessionStorage.getItem('terrariumId') ? sessionStorage.getItem('terrariumId') : localStorage.getItem('terrariumToChange')}`)
+    } else if (response.status !== 401) {
+        refreshTokenByAPI()
     }
-  
+  }
+
+  const connectProfile = async (id: any) => {
+    const token = getToken('access');
+    if (!token) {
+            navigate('/login')
+    };
+    await setTerrariumProfile(sessionStorage.getItem('terrariumId') ? sessionStorage.getItem('terrariumId') : localStorage.getItem('terrariumToChange'), id, token)
+    if (localStorage.getItem('terrariumToChange')) {
+      navigate(`/terrarium/${localStorage.getItem('terrariumToChange')}/settings`)
+      localStorage.removeItem('terrariumToChange')    
+    } else {
+      navigate('/terrarium_info')
+    }
+  }
+
+  const refreshTokenByAPI = async () => {
+    const data = {
+        "clientId": "web-app",
+        "refreshToken": getToken('refresh')
+    }
+    const responseRefresh = await refreshTokens(data)
+    if (responseRefresh.ok) {
+        createTerrariumProfile()
+    } else {
+        navigate('/login')
+    }
   }
   const [temperatureHotNight, setTemperatureHotNight] = useState('')
   const [temperatureHotDay, setTemperatureHotDay] = useState('')
@@ -57,6 +87,7 @@ const createTerrariumProfile = async () => {
 
   const [counterDay, setCounterDay] = useState(0)
   const [counterNight, setCounterNight] = useState(0)
+  const [name, setName] = useState('');
 
 
   return (
@@ -77,10 +108,14 @@ const createTerrariumProfile = async () => {
               {menuOpen && <div className={s.menuOverlay} onClick={toggleMenu}></div>}
                 <div className={s.rightQR_side}>
                       <div className={s.rightQR_side_wrapper}>
-                        <div className={s.pageTitle}>
-                            
+ 
+                      <div className={s.pageTitle}>
+                            <input value={name}
+                            onChange={(e) => {setName(e.target.value)}} className={`${s.registrationForm_field__input}`}  placeholder='Введите название'></input>
+
                         </div>
                         <div  className={s.statisticCorrectMode}>
+
                             <div className={s.statisticCorrectMode_left}>
                                 <div className={s.title_left}>
                                     <img src={temperature}></img>
@@ -219,7 +254,9 @@ const createTerrariumProfile = async () => {
                         </div>
                         <div  className={s.button_wrapper}>
                         <button onClick={() => {
-                            createTerrariumProfile()
+                            if (name !== '' && temperatureHotNight !== '' && temperatureHotDay !== ''  && startTime !== ''  && endTime !== ''  && temperatureColdNight !== ''  && temperatureColdDay !== ''  && humidityDay !== ''  && humidityNight !== '') {
+                                createTerrariumProfile()
+                            }
                         }} className={s.registrationForm_button}>Сохранить</button>
                                 </div>
                       </div>

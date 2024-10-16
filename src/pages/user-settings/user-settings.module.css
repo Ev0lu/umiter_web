@@ -98,7 +98,7 @@
     padding: 16px;
     padding-left: 50px;
     width: 330px;
-    background-color: #181818;
+    background-color: #1d1d1d;
     color: #515151;
     font-size: 16px;
     border: none;
@@ -430,8 +430,8 @@ a {
       }
       
       .menuOpen {
-        width: 35%; /* Меню выезжает на 70% экрана */
-      }
+        width: 75%;
+    }
     .burgerMenuIcon {
       display: flex;
     }
@@ -445,7 +445,30 @@ a {
     }
   
     .menuOpen {
-        width: 35%; /* Настроить ширину при открытии меню */
+        width: 75%;
+    }
+
+    .delete_account_wrapper p{
+        font-size: 12px;
     }
   }
   
+
+.userSettingsForm_field{
+    margin-top: 20px;
+ 
+}
+
+.userSettingsForm_button_wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete_account_wrapper{
+    background-color: #1d1d1d;
+    padding: 0px 20px 20px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}

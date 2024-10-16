@@ -93,7 +93,11 @@ function UserSettings() {
         const data = {
             "password": password
         }
-        await deleteUserAccount(data, token)
+        const response = await deleteUserAccount(data, token)
+        if (response.ok) {
+            navigate('/login')
+        }
+
     }
 
     const navigate = useNavigate()
@@ -160,14 +164,15 @@ function UserSettings() {
 
                                 }} className={s.userSettingsForm_button}>{changeMode === true ? 'Сохранить' : 'Изменить'}</button>
                         </Link>
-                        <p onClick={async () => {
-                            await deleteUser()
-                            navigate('/login')
-                            }} className={s.deleteAccount}>Удалить аккаунт</p>  
-                        <div className={s.userSettingsForm_field}>
-                            <input value={password} 
-                            onChange={(e) => setPassword(e.target.value)} className={`${s.deleteInput} ${errorFields.name && s.error}`} placeholder='Введите пароль для удаления'></input>
-                        </div> 
+                        <div className={s.delete_account_wrapper}>
+                            <div className={s.userSettingsForm_field}>
+                                <input value={password} 
+                                onChange={(e) => setPassword(e.target.value)} className={`${s.deleteInput} ${errorFields.name && s.error}`} placeholder='Введите пароль для удаления'></input>
+                            </div> 
+                            <p onClick={async () => {
+                                await deleteUser()
+                                }} className={s.deleteAccount}>Удалить аккаунт</p> 
+                        </div>
 
                     </div>  
                 </div>  

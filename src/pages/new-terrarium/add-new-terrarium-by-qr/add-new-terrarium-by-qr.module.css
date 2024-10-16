@@ -118,7 +118,6 @@ color: #D5FF03;
     font-size: 16px;
     border: 1px solid #F6F6F6 !important;
     position: relative;
-    z-index: 9999;
     outline: none;
 }
 .registrationForm_field__input__password:focus{
@@ -408,8 +407,8 @@ a {
       }
       
       .menuOpen {
-        width: 35%; /* Меню выезжает на 70% экрана */
-      }
+        width: 75%;
+    }
     .burgerMenuIcon {
       display: flex;
     }
@@ -423,7 +422,7 @@ a {
     }
   
     .menuOpen {
-        width: 35%; /* Настроить ширину при открытии меню */
+        width: 75%;
     }
   }
   

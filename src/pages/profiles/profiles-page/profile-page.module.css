@@ -104,6 +104,9 @@
 }
 
 
+
+
+
 .profile_name{
     width: 70%;
 }
@@ -163,7 +166,32 @@
 
 }
 
+.fixedItem {
+    width: 250px;
+    padding: 20px;
+    margin: 0 auto;
+    position: fixed; /* Зафиксировать элемент */
+    bottom: 10px; /* Прилепить к низу экрана */
+    left: 0px; /* Выровнять по левому краю */
+    right: 0; /* Выровнять по правому краю */
+    background-color: #242424; /* Цвет фона */
+    text-align: center; /* Центрирование текста */
+    z-index: 1000; /* Убедитесь, что элемент сверху */
+}
+
 @media (max-width: 600px) {
+
+    .fixedItem {
+        width: 100%;
+        margin: 0 auto;
+        position: fixed; /* Зафиксировать элемент */
+        bottom: 10px; /* Прилепить к низу экрана */
+        left: 0px; /* Выровнять по левому краю */
+        right: 0; /* Выровнять по правому краю */
+        background-color: #242424; /* Цвет фона */
+        text-align: center; /* Центрирование текста */
+        z-index: 1000; /* Убедитесь, что элемент сверху */
+    }
     .registrationForm_field__input{
         width: 400px;
     }
@@ -202,3 +230,4 @@
 .profile_item{
     cursor: pointer;
 }
+

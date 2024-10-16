@@ -736,8 +736,8 @@
       }
       
       .menuOpen {
-        width: 35%; /* Меню выезжает на 70% экрана */
-      }
+        width: 75%;
+    }
     .burgerMenuIcon {
       display: flex;
     }
@@ -751,7 +751,7 @@
     }
   
     .menuOpen {
-        width: 35%; /* Настроить ширину при открытии меню */
+        width: 75%;
     }
   }
   

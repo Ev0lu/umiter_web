@@ -121,7 +121,6 @@ function TerrariumList() {
                         {terrariumList.map((terrarium:any, index:any) => (
                     
                            <div onClick={() => {
-                            console.log(terrarium)//deleteTerrarium(terrarium.id, sessionStorage.getItem('accessToken'))
                            }} key={index} className={s.grid_item}>
                              <Link to={`/terrarium/${terrarium[0][0].id}/`}>
                                 <div className={s.grid_item__leftSide}>

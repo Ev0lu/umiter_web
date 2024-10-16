@@ -32,7 +32,7 @@
 
 .leftMenu_side{
     height: 100%;
-    width: 33.4%;
+    width: 25%;
 }
 
 .leftMenu_side_wrapper{
@@ -410,8 +410,8 @@ a {
       }
       
       .menuOpen {
-        width: 35%; /* Меню выезжает на 70% экрана */
-      }
+        width: 75%;
+    }
     .burgerMenuIcon {
       display: flex;
     }
@@ -425,7 +425,7 @@ a {
     }
   
     .menuOpen {
-        width: 35%; /* Настроить ширину при открытии меню */
+        width: 75%;
     }
   }
   

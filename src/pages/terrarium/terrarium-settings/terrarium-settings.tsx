@@ -64,7 +64,7 @@ function TerrariumSettings() {
                             await changeProfile()
                             navigate('/select_profile')
                             }} style={{cursor: 'pointer'}} className={`${s.registrationForm_field__input}`}>
-                                <p className={s.settingsItem}>Сменить профиль</p>
+                                <p className={s.settingsItem}>Сменить вид</p>
                         </div> 
                     </div>
                     <div className={s.registrationForm_field}>

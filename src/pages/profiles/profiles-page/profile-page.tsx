@@ -6,7 +6,6 @@ import { getToken } from '../../../App';
 import searchImage from '../../../assets/Shape.svg'
 
 function ProfilesPage() {
-  const [name, setName] = useState('');
 
   const [profiles, setProfiles] = useState([]);
 
@@ -135,26 +134,23 @@ function ProfilesPage() {
                                  <div className={s.arrowimg}>{`>`}</div>
                               </div>
                             ))}
-                                                          <input value={name}
-                        onChange={(e) => {setName(e.target.value)}} className={`${s.registrationForm_field__input}`}  placeholder='Или введите название и нажмите на другое'></input>
-
-                              <div  onClick={() => {
-                                if (name !== ''){
-                                  sessionStorage.setItem('name', name)
-                                  sessionStorage.setItem('terrariumId', terrariumId)
-
-                                  navigate('/create/custom_profile')
-                                }
-                                
-                              }} className={s.profile_item}>
-                                 <div className={s.profile_name}>Другое</div>
-                                 <div className={s.arrowimg}>{`>`}</div>
-                              </div>
+   
 
                             </div>
                       </div>
 
                 </div>
+                
+                <div  onClick={() => {
+                                  sessionStorage.setItem('terrariumId', terrariumId)
+
+                                  navigate('/create/custom_profile')
+                               
+                                
+                              }} className={`${s.profile_item} ${s.fixedItem}`}>
+                                 <div className={s.profile_name}>Другое</div>
+                                 <div className={s.arrowimg}>{`>`}</div>
+                              </div>
         </div>
 
   </div>

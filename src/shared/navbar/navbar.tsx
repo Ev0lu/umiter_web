@@ -19,7 +19,7 @@ export const Navbar = () => {
     const isActive = (path: string) => location.pathname === path;
   
     const refContainer = useRef(null);
-    const [isInscriptionHidden, setIsInscriptionHidden] = useState(false);
+    const [, setIsInscriptionHidden] = useState(false);
 
     const handleResize = () => {
         if (refContainer.current) {
@@ -38,32 +38,32 @@ export const Navbar = () => {
                     <img src={miniLogo} alt="Mini Logo" />
                 </div>
                 <div className={s.mainNav}>
-                    <div onClick={() => {navigate('/terrarium_list')}} style={{width: isInscriptionHidden ? '65px' : '100%' }} className={`${s.navMenuLink} ${isActive('/') ? s.active : ''} ${isActive('/terrarium_list') ? s.active : ''}`}>
+                    <div onClick={() => {navigate('/terrarium_list')}}  className={`${s.navMenuLink} ${isActive('/') ? s.active : ''} ${isActive('/terrarium_list') ? s.active : ''}`}>
                         <img src={terr} alt="Terrariums" />
-                        <p style={{ display: isInscriptionHidden ? 'none' : 'block' }}>Террариумы</p>
+                        <p>Террариумы</p>
                     </div>
-                    <div onClick={() => {navigate('/new_terrarium/info')}} style={{width: isInscriptionHidden ? '65px' : '100%' }} className={`${s.navMenuLink}  ${isActive('/new_terrarium/info') ? s.active : ''}`}>
+                    <div onClick={() => {navigate('/new_terrarium/info')}} className={`${s.navMenuLink}  ${isActive('/new_terrarium/info') ? s.active : ''}`}>
                             <img src={terrarium} alt="Graphics" />
-                            <p style={{ display: isInscriptionHidden ? 'none' : 'block'}}>Добавить терр.</p>  
+                            <p>Добавить терр.</p>  
                     </div>
-                    <div onClick={() => {navigate('/settings')}} style={{width: isInscriptionHidden ? '65px' : '100%' }} className={`${s.navMenuLink}  ${isActive('/settings') ? s.active : ''}`}>
+                    <div onClick={() => {navigate('/settings')}}  className={`${s.navMenuLink}  ${isActive('/settings') ? s.active : ''}`}>
                         <img src={settings} alt="Settings" />
-                        <p style={{ display: isInscriptionHidden ? 'none' : 'block' }}>Настройки</p>
+                        <p>Настройки</p>
                     </div>
                 </div>
                 <div className={s.bottomNav}>
-                    <div style={{width: isInscriptionHidden ? '65px' : '100%' }} onClick={() => {navigate('/support')}} className={`${s.navMenuLink}  ${isActive('/support') ? s.active : ''}`}>
+                    <div  onClick={() => {navigate('/support')}} className={`${s.navMenuLink}  ${isActive('/support') ? s.active : ''}`}>
                         <img src={heartsvg} alt="Support" />
-                        <p style={{ display: isInscriptionHidden ? 'none' : 'block' }}>Служба поддержки</p>
+                        <p>Служба поддержки</p>
                     </div>
                     <div onClick={() => {
                             setToken('access', '')
                             setToken('refresh', '')
                             navigate('/login')
                     }
-                    } style={{width: isInscriptionHidden ? '65px' : '100%' }} className={`${s.navMenuLink}  ${isActive('/stats') ? s.active : ''}`}>
+                    } className={`${s.navMenuLink}  ${isActive('/stats') ? s.active : ''}`}>
                         <img src={logout} alt="Logout" />
-                        <p style={{ display: isInscriptionHidden ? 'none' : 'block' }}>Выход</p>
+                        <p >Выход</p>
                     </div>
                 </div>
             </div>
