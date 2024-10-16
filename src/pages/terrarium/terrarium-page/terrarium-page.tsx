@@ -106,17 +106,23 @@ const getUserName = async () => {
                                         <p>Воздух</p>
                                     </div>
                                     <div className={s.statistic_bottom_sign}>
-                                        <p>Диапазон температур в нижнем углу</p>
+                                        <p>Нижний угол</p>
                                     </div>
                                     <div className={s.statistic_bottom_sign}>
-                                        <p>Диапазон температур в верхнем углу</p>
+                                        <p>Верхний угол</p>
                                     </div>
+                                    <div className={s.statistic_bottom_sign}>
+                                        <p>Диапазон температур</p>
+                                    </div>
+
                                 </div>
                                  
                                 <div className={s.statistic_right}>
-                                    <p>{terrarium.length > 0 && terrarium[0] !== 'null' ? `${terrarium[0].indicators.temperature_cold[0]}${terrarium[0].indicators.temperature_cold[1]} - ${terrarium[0].indicators.temperature_hot[0]}${terrarium[0].indicators.temperature_hot[1]}` : '-' } °C </p>
-                                    <p className={s.bottomInscription}>{terrarium.length > 0 ? terrarium[1].settings.temperature_cold_night : '-'}-{terrarium.length > 0 ? terrarium[1].settings.temperature_cold_day : '-'}°C</p>
-                                    <p className={s.bottomInscription}>{terrarium.length > 0 ? terrarium[1].settings.temperature_hot_night : '-'}-{terrarium.length > 0 ? terrarium[1].settings.temperature_hot_day : '-'}°C</p>
+                                    
+                                    <p >{terrarium.length > 0 && terrarium[0] !== 'null' ? `${terrarium[0].indicators.temperature_cold[0]}${terrarium[0].indicators.temperature_cold[1]}` : '-' } °C </p>
+                                    <p>{terrarium.length > 0 && terrarium[0] !== 'null' ? `${terrarium[0].indicators.temperature_hot[0]}${terrarium[0].indicators.temperature_hot[1]}` : '-' } °C </p>
+
+                                    <p style={{fontSize: '16px'}} className={s.bottomInscription}>{terrarium.length > 0 ? terrarium[1].settings.temperature_cold_night : '-'}-{terrarium.length > 0 ? terrarium[1].settings.temperature_hot_day : '-'}°C</p>
 
                                 </div>
                                 
@@ -128,12 +134,21 @@ const getUserName = async () => {
                                         <p>Влажность</p>
                                     </div>
                                     <div className={s.statistic_bottom_sign}>
-                                        <p>Диапазон допустимой влажности в %</p>
+                                        <p>Нижний угол</p>
+                                    </div>
+                                    <div className={s.statistic_bottom_sign}>
+                                        <p>Верхний угол</p>
+                                    </div>
+                                    <div className={s.statistic_bottom_sign}>
+                                        <p>Диапазон в %</p>
                                     </div>
                                 </div>
                                 <div className={s.statistic_right}>
-                                    <p>{terrarium.length > 0 && terrarium[0] !== 'null' ?  `${terrarium[0].indicators.humidity_cold[0]}${terrarium[0].indicators.humidity_cold[1]} - ${terrarium[0].indicators.humidity_hot[0]}${terrarium[0].indicators.humidity_hot[1]}` : '-' } %</p>
-                                    <p className={s.bottomInscription}>{terrarium.length > 0 ? terrarium[1].settings.humidity_min : '-'}-{terrarium.length > 0 ? terrarium[1].settings.humidity_max : '-'}%</p>                                </div>
+                                    <p>{terrarium.length > 0 && terrarium[0] !== 'null' ?  `${terrarium[0].indicators.humidity_cold[0]}${terrarium[0].indicators.humidity_cold[1]}` : '-' } %</p>
+                                    <p>{terrarium.length > 0 && terrarium[0] !== 'null' ?  `${terrarium[0].indicators.humidity_hot[0]}${terrarium[0].indicators.humidity_hot[1]}` : '-' } %</p>
+
+                                    <p style={{fontSize: '16px'}} className={s.bottomInscription}>{terrarium.length > 0 ? terrarium[1].settings.humidity_min : '-'}-{terrarium.length > 0 ? terrarium[1].settings.humidity_max : '-'}%</p>                
+                                                    </div>
                             </div>
                             <div className={s.statistic}>
                                 <div className={s.statistic_left}>

@@ -157,7 +157,7 @@
 .statistic_bottom_sign{
     color: #BDBDBD;
     font-size: 18px;
-    margin-top: 5%;
+    margin-top: 1.3%;
 }
 
 .bottomInscription{
@@ -176,11 +176,11 @@
 
 .statistic_right{
     text-align: center;
-    margin-top: 1%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-wrap: nowrap;
+    gap: 10px;
     }
 
 .pageTitle{
@@ -234,6 +234,7 @@
 
 .statistic_left{
     width: 75%;
+
 }
 
 .statistic_right{
@@ -275,7 +276,7 @@
     .statistic_bottom_sign{
         color: #BDBDBD;
         font-size: 16px;
-        margin-top: 5%;
+        margin-top: 1.3%;
     
     
     }
@@ -309,7 +310,7 @@
     .statistic_bottom_sign{
         color: #BDBDBD;
         font-size: 12px;
-        margin-top: 5%;
+        margin-top: 1.3%;
     
     
     }
@@ -379,7 +380,7 @@
     .statistic_bottom_sign{
         color: #BDBDBD;
         font-size: 12px;
-        margin-top: 5%;
+        margin-top: 1.3%;
     
     
     }

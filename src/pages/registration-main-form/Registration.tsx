@@ -1,7 +1,6 @@
 import s from './Registration.module.css'
 import umiterLogo from '../../assets/LOGO_varelmo.svg'
 import passwordFieldEye from '../../assets/passwordFieldEye.svg'
-import mailFieldImage from '../../assets/mailField.svg'
 import passwordFieldLock from '../../assets/passwordFieldLock.svg'
 import nameFieldImage from '../../assets/nameField.svg'
 import phoneFieldImage from '../../assets/phoneField.svg'
@@ -16,7 +15,6 @@ function Registration() {
 */
     const [name, setName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
-    const [mail, setMail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -43,17 +41,6 @@ function Registration() {
         setPhone(event.target.value);
     };
 
-    const handleMailChange = (event:any) => {
-        setMail(event.target.value);
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        const isValidEmail = emailRegex.test(event.target.value);
-        if (isValidEmail === true) {
-            setCheckValidMail('true')
-        } else{
-            setCheckValidMail('')
-        }
-    };
-
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
     };
@@ -62,24 +49,19 @@ function Registration() {
     const [errorFields, setErrorFields] = useState({
         name: false,
         phone: false,
-        mail: false,
         password: false,
-        checkValidMail: false,
         checkIsValidPhone: false,
         checkUniqueLoginPhone: false
     });
 
     const [checkIsValidPhone,setCheckIsValidPhone] = useState('')
     const [checkUniqueLoginPhone, ] = useState('')
-    const [checkValidMail,setCheckValidMail] = useState('')
 
     const validateFields = () => {
         const errors = {
             name: name === '',
             phone: phone === '',
-            mail: mail === '',
             password: password === '',
-            checkValidMail: checkValidMail === '',
             checkIsValidPhone: checkIsValidPhone === '',
             checkUniqueLoginPhone: checkUniqueLoginPhone === ''
         };
@@ -113,12 +95,7 @@ function Registration() {
                         {phone === '' && (errorFields.phone && <span className={s.error_message}>Пожалуйста, введите телефон</span>)}
                         {phone !== '' && checkIsValidPhone === '' && <span className={s.error_message}>Телефон должен начинаться с +...</span>}
                     </div>
-                    <div className={s.registrationForm_field}>
-                        <img className={s.registrationForm_field_image__mail} src={mailFieldImage}></img>
-                        <input value={mail}
-                        onChange={handleMailChange}  className={`${s.registrationForm_field__input}`} placeholder='почта'></input>
-                        {/*mail === '' && (errorFields.mail && <span className={s.error_message}>Пожалуйста, введите почту</span>)*/}
-                    </div> 
+
                     <div className={s.registrationForm_field__password}>
                         <img className={s.registrationForm_field_image} src={passwordFieldLock}></img>
                         <input
