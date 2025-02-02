@@ -55,7 +55,7 @@ function AddNewTerrariumToProfile() {
               </div>
             </div>
             <div className={s.registration_form_button_wrapper}>
-              <Link to={isLinkIdExist ? '/select_profile' : '/new_terrarium'}>
+              <Link to={isLinkIdExist ? '/terrarium_list' : '/new_terrarium'}>
                 <button onClick={async () => {
                   validateFields(fieldValues)
                   if (isLinkIdExist) await createTerrarium(linkId);

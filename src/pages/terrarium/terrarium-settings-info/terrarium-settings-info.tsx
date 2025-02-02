@@ -45,6 +45,7 @@ function TerrariumSettingsInfo() {
     try {
       if (name) await updateName({ terId: terrariumId, newName: name }).unwrap();
       if (timezone) await updateTimezone({ terId: terrariumId, newTimezone: timezone }).unwrap();
+      sessionStorage.removeItem('terrariumToChange');
       navigate('/terrarium_list');
     } catch (error) {
       console.error('Ошибка при обновлении:', error);

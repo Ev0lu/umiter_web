@@ -23,12 +23,13 @@ function TerrariumList() {
   useEffect(() => {
     if (terrariumData) {
       setTerrariumList(terrariumData.terrariums);
-      const emptyTerrarium = terrariumData.terrariums.find(item => item.profile === null);
+      const emptyTerrarium = terrariumData.terrariums.find(item => item.profileId === null);
       if (emptyTerrarium) {
+        sessionStorage.setItem('terrariumToChange', emptyTerrarium.id);
         navigate('/select_profile');
       }
     }
-  }, [terrariumData, navigate]);
+  }, [terrariumData]);
 
   terrariumLoading || userLoading && <p>Загрузка...</p>;
 

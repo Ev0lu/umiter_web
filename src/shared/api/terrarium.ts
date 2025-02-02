@@ -38,7 +38,14 @@ export const terrariumApi = createApi({
             query: (linkId) => `log/last?terId=${linkId}`,
         }),
         getProfiles: builder.query<any, string>({
-            query: (terrariumId) => `profile?type=all&terId=${terrariumId}`,
+            query: (terrariumId) => ({
+                url: `profile?type=all&terId=${terrariumId}`,
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+            }),
         }),
         getTimezones: builder.query<any, void>({
             query: () => `terrarium/timezone`,
@@ -61,7 +68,7 @@ export const terrariumApi = createApi({
             invalidatesTags: (_result, _error, { terId }) => [{ type: 'Profiles', id: terId }],
         }),
         checkLinkId: builder.query<any, string>({
-            query: (linkId) => `link/${linkId}`,
+            query: (linkId) => `public/terrarium?linkId=${linkId}`,
         }),
         deleteTerrarium: builder.mutation<void, string>({
             query: (terId) => ({
@@ -103,11 +110,15 @@ export const terrariumApi = createApi({
 
 // Сheck link-id hook
 export function useLinkIdChecker(linkId: string) {
-    const { data, error, isLoading } = terrariumApi.useCheckLinkIdQuery(linkId, {
+    const { error, isLoading, isSuccess } = terrariumApi.useCheckLinkIdQuery(linkId, {
         skip: linkId.length !== 20,
     });
 
-    return { isLinkIdExist: data?.ok ?? false, isLoading, error };
+    return { 
+        isLinkIdExist: isSuccess, 
+        isLoading, 
+        error 
+    };
 }
 
 // Creation and connection to terrarium
@@ -120,7 +131,7 @@ export function useTerrariumProfile() {
     const createTerrariumProfile = async () => {
         const data = {
             name: profile.name,
-            terId: sessionStorage.getItem('terrariumId') || localStorage.getItem('terrariumToChange'),
+            terId: sessionStorage.getItem('terrariumId') || sessionStorage.getItem('terrariumToChange'),
             settings: {
                 temperature_hot_night: profile.temperatureHotNight,
                 temperature_hot_day: profile.temperatureHotDay,
@@ -142,12 +153,12 @@ export function useTerrariumProfile() {
     };
 
     const connectProfile = async (profileId: string) => {
-        const terrariumId = sessionStorage.getItem('terrariumId') || localStorage.getItem('terrariumToChange');
+        const terrariumId = sessionStorage.getItem('terrariumId') || sessionStorage.getItem('terrariumToChange');
         await setTerrariumProfile({ terId: terrariumId, profileId });
 
-        if (localStorage.getItem('terrariumToChange')) {
-            navigate(`/terrarium/${localStorage.getItem('terrariumToChange')}/settings`);
-            localStorage.removeItem('terrariumToChange');
+        if (sessionStorage.getItem('terrariumToChange')) {
+            navigate(`/terrarium/${sessionStorage.getItem('terrariumToChange')}/settings`);
+            sessionStorage.removeItem('terrariumToChange');
         } else {
             navigate('/terrarium_info');
         }

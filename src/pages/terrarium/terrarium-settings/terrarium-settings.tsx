@@ -34,7 +34,7 @@ function TerrariumSettings() {
                     </div>
                     <div className={s.registration_form_field}>
                         <div onClick={() => {
-                            localStorage.setItem('terrariumToChange', terrariumId);
+                            sessionStorage.setItem('terrariumToChange', terrariumId);
                             navigate('/select_profile');
                         }} className={s.registration_form_field__input} style={{ cursor: 'pointer' }}>
                             <p className={s.settingsItem}>Сменить вид</p>

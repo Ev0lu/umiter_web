@@ -25,7 +25,7 @@
 
 .registration_form_wrapper {
     display: flex;
-    min-height: 650px;
+    min-height: 850px;
 }
 
 .registration_form_fields {
@@ -49,14 +49,13 @@
 
 .registration_form_button_wrapper {
     text-align: center;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 5%;
 }
 
 .registration_form_button_wrapper p {
     text-align: center;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     font-family: 'Formular', sans-serif;
 }
 
@@ -74,7 +73,7 @@
     width: 260px;
     padding: 15px;
     border-radius: 35px;
-    margin-bottom: 20%;
+    margin-bottom: 5%;
 }
 
 .registration_form_button__again__disabled {
@@ -91,7 +90,7 @@
     width: 260px;
     padding: 15px;
     border-radius: 35px;
-    margin-bottom: 20%;
+    margin-bottom: 5%;
 }
 
 .registration_form_button {
@@ -290,5 +289,4 @@ input[type='radio']:checked:after {
     font-family: 'Formular';
     opacity: 0.8;
     font-size: 16px;
-    margin-top: -10%;
 }

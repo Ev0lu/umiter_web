@@ -46,7 +46,7 @@ function LoginPage() {
                         <div className={s.password_form__bottom}>
                             <div className={s.errors_wrapper}>
                                 {password === '' && (errorFields.password && <span className={s.error_message}>Пожалуйста, введите пароль</span>)}
-                                {password === '' && (responsePassword && <span className={s.error_message}>Введине правильные данные</span>)}
+                                {password === '' && (responsePassword && <span className={s.error_message}>Введите правильные данные</span>)}
                             </div>
                             <p className={s.passwordCharsCount}>{`${password.length}`}/10</p>
                         </div>

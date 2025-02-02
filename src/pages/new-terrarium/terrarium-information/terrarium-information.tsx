@@ -58,14 +58,16 @@ function TerrariumInfo() {
           <div className={s.registration_form_button_wrapper}>
             <button onClick={async () => {
               validateFields(fieldValues)
+              console.log('terr')
               if (name && timezone) {
-                await updateName({newName: name, terId: sessionStorage.getItem('lastProfile')})
-                await updateTimezone({newTimezone: timezone, terId: sessionStorage.getItem('lastProfile')})
+                await updateName({newName: name, terId: sessionStorage.getItem('terrariumToChange')})
+                await updateTimezone({newTimezone: timezone, terId: sessionStorage.getItem('terrariumToChange')})
+                sessionStorage.removeItem('terrariumToChange');
                 navigate('/terrarium_list')
               }
             }} className={s.registration_form_button}>Сохранить</button>
           </div>
-        </div>
+        </div>                         
       </div>
     </div>
   )

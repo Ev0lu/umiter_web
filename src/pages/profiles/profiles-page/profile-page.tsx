@@ -15,9 +15,9 @@ function ProfilesPage() {
 
   useEffect(() => {
     if (terrariumData) {
-      const terrariums = terrariumData.terrariums;
-      const emptyTerrarium = terrariums.find(item => item.profileName === null);
-      const storedTerrariumId = localStorage.getItem('terrariumToChange') || emptyTerrarium?.id;
+      const emptyTerrarium = terrariumData.terrariums.find(item => item.profileName === null);
+      if (emptyTerrarium) sessionStorage.setItem('terrariumToChange', emptyTerrarium?.id);
+      const storedTerrariumId = sessionStorage.getItem('terrariumToChange') || emptyTerrarium?.id;
       if (storedTerrariumId) setTerrariumId(storedTerrariumId);
     }
   }, [terrariumData]);
@@ -41,11 +41,10 @@ function ProfilesPage() {
   const connectProfile = async (profileId: string) => {
     await setTerrariumProfile({ terId: terrariumId, profileId }).unwrap();
     await refetch()
-    if (localStorage.getItem('terrariumToChange')) {
-      navigate(`/terrarium/${localStorage.getItem('terrariumToChange')}/settings`);
-      localStorage.removeItem('terrariumToChange');
+    if (sessionStorage.getItem('terrariumToChange')) {
+      navigate(`/terrarium/${sessionStorage.getItem('terrariumToChange')}/settings`);
     } else {
-      navigate('/terrarium_info');
+      navigate(`/terrarium_info`);
     }
   };
 

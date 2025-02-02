@@ -166,21 +166,21 @@ export function useCodeVerification() {
     const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
         event.preventDefault();
         const pastedData = event.clipboardData.getData("text").trim();
-    
+
         const validCharacters = pastedData.replace(/[^a-zA-Z0-9]/g, "").slice(0, 4);
-    
+
         if (validCharacters.length > 0) {
             setCode(validCharacters.toUpperCase().split(""));
-    
+
             document.getElementById(`code-box-${validCharacters.length - 1}`)?.focus();
         }
-    };    
+    };
 
-    const handleCodeChange = (index: number, value: string) => {    
+    const handleCodeChange = (index: number, value: string) => {
         const newCode = [...code];
         newCode[index] = value;
         setCode(newCode);
-    
+
         if (index < 3 && value !== "") {
             document.getElementById(`code-box-${index + 1}`)?.focus();
         }
@@ -198,18 +198,18 @@ export function useCodeVerification() {
         if (code.join("").length === 4) {
             setTries((prev) => prev + 1);
 
-            const { data } = await checkCorrectCode({
+            const response = await checkCorrectCode({
                 recipient: sessionStorage.getItem("phone") || "",
                 code: code.join(""),
                 linkId: sessionStorage.getItem("linkId") || "",
             });
 
-            if (data) {
-                setIsVerified(true);
-            } else {
+            if ("error" in response) {
                 setIncorrectCode(true);
                 setTimeout(() => setIncorrectCode(false), 3000);
                 setCode(["", "", "", ""]);
+            } else {
+                setIsVerified(true);
             }
         }
     };
