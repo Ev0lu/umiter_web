@@ -69,6 +69,7 @@ export async function fetchApiAuthResponse(
 export const apiBaseQuery = fetchBaseQuery({
   baseUrl: apiUrl,
   prepareHeaders: (headers) => {
+      if (isTokenExpired('access')) setToken('access', null);
       const token = getToken('access');
       if (token) {
           headers.set('Authorization', `Bearer ${token}`);
