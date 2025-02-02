@@ -1,162 +1,89 @@
 import s from './terrarium-list.module.css'
-
+import layout from '@/shared/styles/layout.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react'
-
-import temperature from '../../../assets/temperature.svg'
-import wet from '../../../assets/wet.svg'
-import down_big from '../../../assets/down_big.svg'
-import terrariumArrow from '../../../assets/terrariumArrow.svg'
-import { Navbar } from '../../../shared/navbar/navbar';
-import { getLastTerrariumLog, getTerrariumSettings, getUserInfo } from '../../../shared/api';
-import { getToken } from '../../../App';
-
-
-
+import { terrariumArrow, temperature, wet, down_big } from '@/shared/assets/imageAssets';
+import { Navbar } from '@/shared/navbar/navbar';
+import { terrariumApi, userApi } from '@/shared/api';
+import { BurgerMenu } from '@/shared/ui/burger-menu/burger-menu';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/store/index';
 
 function TerrariumList() {
-    const navigate = useNavigate()
-    const [userName, setUserName] = useState('')
-    const [terrariumList, setTerrariumList] = useState([]);
-    const getTerrariums = async () => {  
-      const token = getToken('access');
-      if (!token) {
-              navigate('/login')
-      };
+  const navigate = useNavigate()
+  const { data: userData, error: userError, isLoading: userLoading } = userApi.useGetUserInfoQuery();
+  const menuOpen = useSelector((state: RootState) => state.visibleMenu.isVisible);
+  const [terrariumList, setTerrariumList] = useState([]);
+  const [fetchTerrariums, { data: terrariumData, isLoading: terrariumLoading, error: terrariumError }] = terrariumApi.useLazyGetTerrariumsQuery();
 
-      try {
-        const response = await fetch('https://api.umiter.ru/v1/terrarium', {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          }
-        });
+  useEffect(() => {
+    fetchTerrariums();
+  }, []);
 
-        if (response.ok) {
-          const data = await response.json();
-          const terrariumsWithSettings = await Promise.all(
-            data.terrariums.map(async item => (
-                [item, await getTerrariumSettings(item.id, token)]
-            ))
-        );
-              
-        const emptyTerrarium = terrariumsWithSettings.find(item => item[1].settings === null)
-        if (emptyTerrarium) {
-          navigate('/select_profile')
-        }
-
-        const terrariumsWithLogs = await Promise.all(
-          terrariumsWithSettings.map(async item => {
-              const response = (await getLastTerrariumLog(item[0].id, token));
-              if (response.status === 401){
-                return navigate('/login')
-              } else if (response.status !== 404) {
-                const data = await response.json();
-                return [item, data];    
-              } else if (response.status === 404) {
-                return [item, {}]
-              }
-           })
-      );
-        console.log(terrariumsWithLogs)
-        setTerrariumList(terrariumsWithLogs)
-        } else {
-          return navigate('/login')
-        }
-      } catch (error) {
+  useEffect(() => {
+    if (terrariumData) {
+      setTerrariumList(terrariumData.terrariums);
+      const emptyTerrarium = terrariumData.terrariums.find(item => item.profile === null);
+      if (emptyTerrarium) {
+        navigate('/select_profile');
       }
     }
-    const getUserName = async () => {
-      const token = getToken('access');
-      if (!token) {
-              navigate('/login')
-      };
+  }, [terrariumData, navigate]);
 
-      const response = await getUserInfo(token)
-      const data = await response.json()
-      setUserName(data.name)
-    }
+  terrariumLoading || userLoading && <p>Загрузка...</p>;
 
-    useEffect(() => {
-      getUserName()
-      setTimeout(() => {getTerrariums(), 200})
-    },[])
-
-
-    const [menuOpen, setMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-      setMenuOpen(!menuOpen);
-    };
-
+  terrariumError || userError && <p>Ошибка загрузки террариумов</p>;
 
   return (
-  <div className={s.newTerrariumForm}>
-        <div className={s.newTerrariumForm_wrapper}>
-              <div className={s.burgerMenuIcon} onClick={toggleMenu}>
-                <div className={s.burgerLine}></div>
-                <div className={s.burgerLine}></div>
-                <div className={s.burgerLine}></div>
-              </div>
-
-              {/* Навигационное меню */}
-              <div className={`${s.leftMenu_side} ${menuOpen ? s.menuOpen : ''}`}>
-                <div className={s.leftMenu_side_wrapper}>
-                  <Navbar />
-                </div>
-              </div>
-              {menuOpen && <div className={s.menuOverlay} onClick={toggleMenu}></div>}
-
-                <div className={s.rightQR_side}>
-                      <div className={s.rightQR_side_wrapper}>
-                        <div className={s.profileName}>
-                            <img src=''></img>
-                            <p>{userName}</p>
-                            <img src={down_big}></img>
-                        </div>
-                        <div className={s.pageTitle}>
-                            <h1>Террариумы</h1>
-                        </div>
-                        <div className={s.grid_container}>
-                        {terrariumList.map((terrarium:any, index:any) => (
-                    
-                           <div onClick={() => {
-                           }} key={index} className={s.grid_item}>
-                             <Link to={`/terrarium/${terrarium[0][0].id}/`}>
-                                <div className={s.grid_item__leftSide}>
-                                     <div className={s.grid_item__leftSide_wrapper}>
-
-                                    <h2>{terrarium[0][0].name}</h2>
-                                    <div className={s.leftSide_temperature}>
-                                        <img src={temperature}></img>
-                                        <p>{terrarium[1].indicators && terrarium[1].indicators.temperature_cold ? `${terrarium[1].indicators.temperature_cold.split('')[0]} - ${terrarium[1].indicators.temperature_hot.split('')[0]}` : '-' } °C </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={s.grid_item__rightSide}>
-                                    <div className={s.right_side__image}>
-                                         <img src={terrariumArrow}></img>
-                                    </div>
-                                    
-                                    <div className={s.rightSide_humidity}>
-                                        <img src={wet} ></img>
-                                        <p>{terrarium[1].indicators && terrarium[1].indicators.humidity_cold ? `${terrarium[1].indicators.humidity_cold.split('')[0]} - ${terrarium[1].indicators.humidity_hot.split('')[0]}` : '-' } %</p>
-                                    </div>
-                                </div>
-                                </Link>
-
-                            </div>
-                        ))}
-
-                        
-
-                        </div>
-
-                      </div>
-                </div>
+    <div className={s.new_terrarium_form}>
+      <div className={s.new_terrarium_form_wrapper}>
+        <BurgerMenu />
+        <div className={`${layout.leftMenu_side} ${menuOpen ? layout.menuOpen : ''}`}>
+          <div className={layout.leftMenu_side_wrapper}>
+            <Navbar />
+          </div>
         </div>
-
-  </div>
+        <div className={s.right_side}>
+          <div className={s.right_side_wrapper}>
+            <div className={s.profileName}>
+              <img src=''></img>
+              <p>{userData?.name}</p>
+              <img src={down_big}></img>
+            </div>
+            <div className={s.pageTitle}>
+              <h1>Террариумы</h1>
+            </div>
+            <div className={s.grid_container}>
+              {terrariumList.map((terrarium: any, index: any) => (
+                <div onClick={() => {
+                }} key={index} className={s.grid_item}>
+                  <Link to={`/terrarium/${terrarium.id}/`}>
+                    <div className={s.grid_item__leftSide}>
+                      <div className={s.grid_item__leftSide_wrapper}>
+                        <h2>{terrarium.name}</h2>
+                        <div className={s.leftSide_temperature}>
+                          <img src={temperature}></img>
+                          <p>{terrarium.indicators && terrarium.indicators.temperature_cold ? `${terrarium.indicators.temperature_cold.split('.')[0]}-${terrarium.indicators.temperature_hot.split('.')[0]}` : '-'} °C </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={s.grid_item__rightSide}>
+                      <div className={s.right_side__image}>
+                        <img src={terrariumArrow}></img>
+                      </div>
+                      <div className={s.rightSide_humidity}>
+                        <img src={wet} ></img>
+                        <p>{terrarium.indicators && terrarium.indicators.humidity_cold ? `${terrarium.indicators.humidity_cold.split('.')[0]}-${terrarium.indicators.humidity_hot.split('.')[0]}` : '-'} %</p>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

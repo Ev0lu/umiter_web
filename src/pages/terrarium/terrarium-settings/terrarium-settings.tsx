@@ -1,90 +1,62 @@
-import s from './terrarium-settings.module.css'
+import s from './terrarium-settings.module.css';
+import layout from '@/shared/styles/layout.module.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Navbar } from '../../../shared/navbar/navbar'
-import { deleteTerrarium } from '../../../shared/api';
-import { getToken } from '../../../App';
-import { useState } from 'react';
-
+import { Navbar } from '@/shared/navbar/navbar';
+import { terrariumApi } from '@/shared/api';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/store/index';
+import { BurgerMenu } from '@/shared/ui/burger-menu/burger-menu';
 
 function TerrariumSettings() {
-    const navigate = useNavigate()
-    const location = useLocation()
-    const changeProfile = async () => {
-        const token = getToken('access');
-        if (!token) {
-            navigate('/login')
-        };
-        localStorage.setItem('terrariumToChange', location.pathname.split('/')[2])
-    }
+    const navigate = useNavigate();
+    const location = useLocation();
+    const terrariumId = location.pathname.split('/')[2];
+    const menuOpen = useSelector((state: RootState) => state.visibleMenu.isVisible);   
+    const [deleteTerrarium] = terrariumApi.useDeleteTerrariumMutation();
 
-    const deleteTerrariumById = async () => {
-        const token = getToken('access');
-        if (!token) {
-            navigate('/login')
-        };
-        await deleteTerrarium(location.pathname.split('/')[2], token)
-    }
-
-    const [menuOpen, setMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-    };
-  return (
-  <div className={s.registrationForm}>
-      <div className={s.registrationForm_wrapper}>
-
-      <div className={s.burgerMenuIcon} onClick={toggleMenu}>
-                <div className={s.burgerLine}></div>
-                <div className={s.burgerLine}></div>
-                <div className={s.burgerLine}></div>
-              </div>
-
-              {/* Навигационное меню */}
-              <div className={`${s.leftMenu_side} ${menuOpen ? s.menuOpen : ''}`}>
-                <div className={s.leftMenu_side_wrapper}>
-                  <Navbar />
+    return (
+        <div className={s.registration_form}>
+            <div className={s.registration_form_wrapper}>
+                <BurgerMenu />
+                <div className={`${layout.leftMenu_side} ${menuOpen ? layout.menuOpen : ''}`}>
+                    <div className={layout.leftMenu_side_wrapper}>
+                        <Navbar />
+                    </div>
                 </div>
-              </div>
-              {menuOpen && <div className={s.menuOverlay} onClick={toggleMenu}></div>}
-
-                <div className={s.registrationForm_fields}>
-                    <div className={s.registrationForm_header}>
+                <div className={s.registration_form_fields}>
+                    <div className={s.registration_form_header}>
                         <h1>НАСТРОЙКИ ТЕРРАРИУМА</h1>
                     </div>
-                    <div className={s.registrationForm_field}>
-                        <div 
-                        onClick={() => navigate('terrarium_info')} style={{cursor: 'pointer'}} className={`${s.registrationForm_field__input}`}>
+                    <div className={s.registration_form_field}>
+                        <div onClick={() => navigate('terrarium_info')} className={s.registration_form_field__input} style={{ cursor: 'pointer' }}>
                             <p className={s.settingsItem}>Сменить часовой пояс и имя</p>
-
-                        </div> 
+                        </div>
                     </div>
-                    <div className={s.registrationForm_field}>
+                    <div className={s.registration_form_field}>
+                        <div onClick={() => {
+                            localStorage.setItem('terrariumToChange', terrariumId);
+                            navigate('/select_profile');
+                        }} className={s.registration_form_field__input} style={{ cursor: 'pointer' }}>
+                            <p className={s.settingsItem}>Сменить вид</p>
+                        </div>
+                    </div>
+                    <div className={s.registration_form_field}>
                         <div onClick={async () => {
-                            await changeProfile()
-                            navigate('/select_profile')
-                            }} style={{cursor: 'pointer'}} className={`${s.registrationForm_field__input}`}>
-                                <p className={s.settingsItem}>Сменить вид</p>
-                        </div> 
+                            await deleteTerrarium(terrariumId).unwrap();
+                            navigate('/terrarium_list');
+                        }} className={s.registration_form_field__input} style={{ cursor: 'pointer' }}>
+                            <p className={s.settingsItem} style={{ color: '#990b0b' }}>Отвязать террариум</p>
+                        </div>
                     </div>
-                    <div className={s.registrationForm_field}>
-                    <div onClick={async () => {
-                        await deleteTerrariumById()
-                        navigate('/terrarium_list')}} style={{cursor: 'pointer'}} className={`${s.registrationForm_field__input}`}>
-                                <p style={{color: '#990b0b'}} className={s.settingsItem}>Отвязать террариум</p>
-                    </div>                     
-                    </div> 
-  
-                    <div className={s.registrationForm_button_wrapper}>
-                        <Link to={`/terrarium/${location.pathname.split('/')[2]}`}>
-                            <button onClick={() => {
-                                }} className={s.registrationForm_button}>Вернуться</button>
+                    <div className={s.registration_form_button_wrapper}>
+                        <Link to={`/terrarium/${terrariumId}`}>
+                            <button className={s.registration_form_button}>Вернуться</button>
                         </Link>
-                    </div>       
-                </div> 
+                    </div>
+                </div>
+            </div>
         </div>
-  </div>
-  )
+    );
 }
 
-export default TerrariumSettings
+export default TerrariumSettings;

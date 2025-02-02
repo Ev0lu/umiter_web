@@ -1,159 +1,90 @@
 import s from './profile-page.module.css'
 import { useState, useEffect } from 'react'
-import { getProfiles, setTerrariumProfile } from '../../../shared/api';
+import { terrariumApi } from '@/shared/api';
 import { useNavigate } from 'react-router-dom';
-import { getToken } from '../../../App';
-import searchImage from '../../../assets/Shape.svg'
+import { searchImage } from '@/shared/assets/imageAssets';
 
 function ProfilesPage() {
-
-  const [profiles, setProfiles] = useState([]);
-
-  const getAllProfiles = async (terrariumId) => {
-      const token = getToken('access');
-      if (!token) {
-        navigate('/login')
-      };
-      const response = await getProfiles(token, terrariumId)
-      if (response.ok) {
-          const data = await response.json()
-          setProfiles(data.profiles)
-          console.log(data.profiles)
-          setFilteredProfiles(data.profiles)
-      }
-  }
-
-  const [terrariumId, setTerrariumId] = useState('');
-
-  const getTerrariums = async () => {  
-    const token = getToken('access');
-    if (!token) {
-            navigate('/login')
-    };
-
-    try {
-      const response = await fetch('https://api.umiter.ru/v1/terrarium', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        }
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        const terrariumsWithSettings = await Promise.all(
-          data.terrariums.map(async item => (
-              [item]
-          ))
-      );
-
-        const emptyTerrarium = terrariumsWithSettings.find(item => item[0].profileName === null)
-        if (localStorage.getItem('terrariumToChange')) {
-          await getAllProfiles(localStorage.getItem('terrariumToChange'))
-          setTerrariumId(localStorage.getItem('terrariumToChange'))
-        }
-        if (emptyTerrarium[0].id) {
-          await getAllProfiles(emptyTerrarium[0].id)
-          sessionStorage.setItem('lastProfile', emptyTerrarium[0].id)
-          setTerrariumId(emptyTerrarium[0].id)
-        }
-      } else {
-        navigate('/login')
-      }
-
-    } catch (error) {
-
-    }
-  }
-
-  const setProfilesForEmptyTerrarium = async () => {
-    await getTerrariums()
-  } 
-
-  useEffect(() => {
-    setTimeout(() => setProfilesForEmptyTerrarium(), 1000)
-  }, [])
-
-  const navigate = useNavigate()
-
-  const connectProfile = async (id: any) => {
-    const token = getToken('access');
-    if (!token) {
-            navigate('/login')
-    };
-    await setTerrariumProfile(terrariumId,  id, token)
-    if (localStorage.getItem('terrariumToChange')) {
-      navigate(`/terrarium/${localStorage.getItem('terrariumToChange')}/settings`)
-      localStorage.removeItem('terrariumToChange')    
-    } else {
-      navigate('/terrarium_info')
-    }
-  }
-
-  const [filteredProfiles, setFilteredProfiles] = useState<any>()
+  const navigate = useNavigate();
+  const { data: terrariumData, refetch } = terrariumApi.useGetTerrariumsQuery();
+  const [setTerrariumProfile] = terrariumApi.useSetTerrariumProfileMutation();
 
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [filteredProfiles, setFilteredProfiles] = useState<any[]>([]);
+  const [terrariumId, setTerrariumId] = useState<string>('');
+
+  useEffect(() => {
+    if (terrariumData) {
+      const terrariums = terrariumData.terrariums;
+      const emptyTerrarium = terrariums.find(item => item.profileName === null);
+      const storedTerrariumId = localStorage.getItem('terrariumToChange') || emptyTerrarium?.id;
+      if (storedTerrariumId) setTerrariumId(storedTerrariumId);
+    }
+  }, [terrariumData]);
+
+  const { data: profilesData } = terrariumApi.useGetProfilesQuery(terrariumId, { skip: !terrariumId });
+
+  useEffect(() => {
+    (profilesData?.profiles) && setFilteredProfiles(profilesData.profiles);
+  }, [profilesData]);
 
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      const { value } = event.target;
-      setSearchQuery(value);
+    const { value } = event.target;
+    setSearchQuery(value);
 
-      // Filter kisses based on search query
-      const filtered = profiles.filter(
-          (product:any) => {
-                  return product.name.toLowerCase().includes(value.toLowerCase())
-
-      }
-      );
+    if (profilesData?.profiles) {
+      const filtered = profilesData.profiles.filter((profile: any) => profile.name.toLowerCase().includes(value.toLowerCase()));
       setFilteredProfiles(filtered);
+    }
   };
 
-
+  const connectProfile = async (profileId: string) => {
+    await setTerrariumProfile({ terId: terrariumId, profileId }).unwrap();
+    await refetch()
+    if (localStorage.getItem('terrariumToChange')) {
+      navigate(`/terrarium/${localStorage.getItem('terrariumToChange')}/settings`);
+      localStorage.removeItem('terrariumToChange');
+    } else {
+      navigate('/terrarium_info');
+    }
+  };
 
   return (
-  <div className={s.newTerrariumForm}>
-        <div className={s.newTerrariumForm_wrapper}>
-                <div className={s.rightQR_side}>
-                      <div className={s.rightQR_side_wrapper}>
-                        <div className={s.pageTitle}>
-                                <h1>Вид питомца</h1>
-                        </div>
-                        <div className={s.profileList}>
-                          <div className={s.registrationForm_field}>
-                            <img className={`${s.registrationForm_field_image}`} src={searchImage}></img>
-                            <input value={searchQuery} style={{marginBottom: '10px'}}
-                            onChange={(e) => {handleSearchInputChange(e)}} className={`${s.filteredSearchInput}`}  placeholder='Поиск'></input>
-                          </div>
+    <div className={s.new_terrarium_form}>
+      <div className={s.new_terrarium_form_wrapper}>
+        <div className={s.right_side}>
+          <div className={s.right_side_wrapper}>
+            <div className={s.pageTitle}>
+              <h1>Вид питомца</h1>
+            </div>
+            <div className={s.profileList}>
+              <div className={s.registration_form_field}>
+                <img className={`${s.registration_form_field_image}`} src={searchImage}></img>
+                <input value={searchQuery} style={{ marginBottom: '10px' }}
+                  onChange={(e) => { handleSearchInputChange(e) }} className={`${s.filteredSearchInput}`} placeholder='Поиск'></input>
+              </div>
 
-                          {filteredProfiles && filteredProfiles.map((item:any) => (
-                              <div onClick={() => {
-                                
-                                  connectProfile(item.id)
-                                }} className={s.profile_item} key={item.id}>
-                                 <div className={s.profile_name}>{item.name}</div>
-                                 <div className={s.arrowimg}>{`>`}</div>
-                              </div>
-                            ))}
-   
-
-                            </div>
-                      </div>
-
+              {filteredProfiles && filteredProfiles.map((item: any) => (
+                <div onClick={() => {
+                  connectProfile(item.id)
+                }} className={s.profile_item} key={item.id}>
+                  <div className={s.profile_name}>{item.name}</div>
+                  <div className={s.arrowimg}>{`>`}</div>
                 </div>
-                
-                <div  onClick={() => {
-                                  sessionStorage.setItem('terrariumId', terrariumId)
-
-                                  navigate('/create/custom_profile')
-                               
-                                
-                              }} className={`${s.profile_item} ${s.fixedItem}`}>
-                                 <div className={s.profile_name}>Другое</div>
-                                 <div className={s.arrowimg}>{`>`}</div>
-                              </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-  </div>
+        <div onClick={() => {
+          sessionStorage.setItem('terrariumId', terrariumId)
+          navigate('/create/custom_profile')
+        }} className={`${s.profile_item} ${s.fixedItem}`}>
+          <div className={s.profile_name}>Другое</div>
+          <div className={s.arrowimg}>{`>`}</div>
+        </div>
+      </div>
+    </div>
   )
 }
 

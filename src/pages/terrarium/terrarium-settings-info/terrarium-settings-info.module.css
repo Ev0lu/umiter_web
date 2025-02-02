@@ -1,39 +1,33 @@
-.registrationForm{
-    width: 100%; /* Заполнение всей ширины контейнера */
-    height: 100%; /* Заполнение всей высоты контейнера */
+.registration_form {
+    width: 100%;
+    height: 100%;
     overflow-y: auto;
     background-color: #181818;
-
 }
 
-.registrationForm_wrapper{
-
-    width: 100%; /* Заполнение всей ширины контейнера */
-    height: 100%; /* Заполнение всей высоты контейнера */
+.registration_form_wrapper {
+    width: 100%;
+    height: 100%;
     align-items: center;
     overflow-y: auto;
-
     justify-content: center;
     display: flex;
     gap: 10%;
 }
 
-.logotype{
+.logotype {
     user-select: none;
     pointer-events: none;
 }
 
-.registrationForm_wrapper{
+.registration_form_wrapper {
     display: flex;
-
-    
 }
 
-.registrationForm_fields{
+.registration_form_fields {
     margin-top: 2%;
     overflow-y: auto;
     min-height: 750px;
-
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -42,7 +36,7 @@
     gap: 5%;
 }
 
-.registrationForm_header h1{
+.registration_form_header h1 {
     font-family: 'Ultramono Wide Black';
     font-weight: 900;
     font-size: 36px;
@@ -51,7 +45,7 @@
     margin-bottom: 4%;
 }
 
-.registrationForm_field__input{
+.registration_form_field__input {
     padding: 16px;
     padding-left: 50px;
     width: 300px;
@@ -61,15 +55,14 @@
     font-size: 16px;
     border: 1px solid #F6F6F6;
     position: relative;
-    outline:none;
-
+    outline: none;
 }
 
-.registrationForm_field{
+.registration_form_field {
     position: relative;
 }
 
-.registrationForm_field_image__mail{
+.registration_form_field_image__mail {
     user-select: none;
     position: absolute;
     left: 20px;
@@ -77,7 +70,7 @@
     z-index: 2;
 }
 
-.registrationForm_field__input__password{
+.registration_form_field__input__password {
     padding: 16px;
     padding-left: 50px;
     width: 300px;
@@ -87,15 +80,15 @@
     font-size: 16px;
     border: 1px solid #F6F6F6;
     position: relative;
-    outline:none;
+    outline: none;
 
 }
 
-.registrationForm_field__password{
+.registration_form_field__password {
     position: relative;
 }
 
-.registrationForm_field_image {
+.registration_form_field_image {
     user-select: none;
     position: absolute;
     left: 20px;
@@ -103,12 +96,12 @@
     z-index: 2;
 }
 
-.registrationForm_field_image svg {
-    width: 100%; /* Заполнение всей ширины контейнера */
-    height: 100%; /* Заполнение всей высоты контейнера */
+.registration_form_field_image svg {
+    width: 100%;
+    height: 100%;
 }
 
-.registrationForm_field_imageEye {
+.registration_form_field_imageEye {
     user-select: none;
     position: absolute;
     right: 15px;
@@ -116,17 +109,17 @@
     cursor: pointer;
 }
 
-.registrationForm_field_imageEye svg {
+.registration_form_field_imageEye svg {
     fill: #666;
-    width: 100%; /* Заполнение всей ширины контейнера */
-    height: 100%; /* Заполнение всей высоты контейнера */
+    width: 100%;
+    height: 100%;
 }
 
-.registrationForm_button_wrapper{
+.registration_form_button_wrapper {
     margin-top: 10%;
 }
 
-.registrationForm_button{
+.registration_form_button {
     cursor: pointer;
     border: none;
     outline: none;
@@ -136,22 +129,22 @@
     font-family: 'Formular';
     font-size: 18px;
     font-weight: 500;
-    border: 1px solid #D5FF03 ;
+    border: 1px solid #D5FF03;
     width: 330px;
     padding: 15px;
-    border-radius: 35px; 
+    border-radius: 35px;
 }
 
-.registrationForm_button:hover{
+.registration_form_button:hover {
     background-color: #D5FF03;
     color: black;
 }
 
-.registrationForm_field__hasAccount{
+.registration_form_field__hasAccount {
     margin-bottom: 30px;
 }
 
-.registrationForm_field__hasAccountText{
+.registration_form_field__hasAccountText {
     color: white;
     margin-right: 10px;
     font-family: 'Formular';
@@ -159,7 +152,7 @@
     font-weight: 200;
 }
 
-.registrationForm_field__hasAccountLink{
+.registration_form_field__hasAccountLink {
     color: #D5FF03;
     margin-right: 10px;
     font-size: 18px;
@@ -173,63 +166,69 @@ a {
 }
 
 @media (max-width: 900px) {
-    .logotype{
+    .logotype {
         display: none;
     }
 
-    .registrationForm_field__hasAccount{
+    .registration_form_field__hasAccount {
         margin-bottom: 40px;
     }
 
-    .registrationForm_header h1{
-       font-size: 28px;
+    .registration_form_header h1 {
+        font-size: 28px;
     }
-    
-    .registrationForm_wrapper{
+
+    .registration_form_wrapper {
         gap: 0%;
 
     }
 }
 
-
 .error {
     border: 1px solid #FF0000;
 }
-  
+
 .error_message {
     color: #FF0000;
     font-size: 12px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.registrationForm_field{
+.label{
+    color: white;
+    font-weight: 600;
+    font-family: Formular;
+}
+
+.registration_form_field {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.registrationForm_field__password{
+.registration_form_field__password {
     display: flex;
     flex-direction: column;
     gap: 5px;
 
 }
 
-.passwordCharsCount{
+.passwordCharsCount {
     color: #515151;
     font-size: 16px;
     font-family: 'Formular';
 }
-.password_form__bottom{
+
+.password_form__bottom {
     display: flex;
     justify-content: space-between;
 }
 
-.password_form__bottom > :first-child {
-    order: 1; /* Гарантирует, что первый элемент всегда будет первым */
+.password_form__bottom> :first-child {
+    order: 1;
 }
 
-.password_form__bottom > :last-child {
-    order: 2; /* Гарантирует, что последний элемент всегда будет последним */
-    margin-left: auto; /* Прижимает элемент к правому краю */
+.password_form__bottom> :last-child {
+    order: 2;
+    margin-left: auto;
 }

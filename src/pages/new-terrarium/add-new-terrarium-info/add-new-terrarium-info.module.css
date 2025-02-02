@@ -1,17 +1,15 @@
-
 .menuOverlay {
     position: fixed;
     top: 0;
-    left: 0%; /* Начало overlay с правой стороны меню */
+    left: 0%;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
     cursor: pointer;
-  }
+}
 
-
-.newTerrariumForm{
+.new_terrarium_form {
     width: 100%;
     height: 100%;
     min-height: 100%;
@@ -20,37 +18,25 @@
     overflow-y: auto;
 }
 
-.newTerrariumForm_wrapper{
+.new_terrarium_form_wrapper {
     display: flex;
     width: 100%;
     height: 100%;
     min-height: 100%;
     min-width: 100%;
     overflow-y: auto;
-
 }
 
-.leftMenu_side{
-    height: 100%;
-    width: 25%;
-}
-
-.leftMenu_side_wrapper{
-    height: 100%;
-}
-
-.rightQR_side{
+.right_side {
     background-color: black;
-    width: 100%;
+    width: 75%;
     height: 100%;
     min-height: 650px;
-    display: flex; /* Добавлено */
-    flex-direction: column; /* Добавлено */
-
-
+    display: flex;
+    flex-direction: column;
 }
 
-.rightQR_side_wrapper{
+.right_side_wrapper {
     min-height: 100%;
     width: 100%;
     display: flex;
@@ -59,50 +45,42 @@
     align-items: center;
     gap: 2%;
     padding: 3% 10% 3% 10%;
-
-    
 }
 
-.rightQR_side_title h1{
+.right_side_title h1 {
     text-align: center;
-font-family: 'Ultramono Wide Black';
-font-weight: 900;
-font-size: 36px;
-line-height: 36px;
-color: #D5FF03;
+    font-family: 'Ultramono Wide Black';
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 36px;
+    color: #D5FF03;
 }
 
-a{
+a {
     color: #D5FF03;
 
 }
 
-.rightQR_side_desciption p {
+.right_side_desciption p {
     margin-bottom: 20px;
 }
 
-.rightQR_side_desciption{
-    
+.right_side_desciption {
+
     max-width: 800px;
 }
 
-.rightQR_side_desciption p{
+.right_side_desciption p {
     color: grey;
     font-family: 'Formular';
-
 }
 
-
-
-.underPhotoText{
+.underPhotoText {
     font-family: 'Formular';
     color: rgb(61, 59, 59);
 }
 
-
-
-
-.registrationForm_field__input{
+.registration_form_field__input {
     padding: 16px;
     padding-left: 50px;
     width: 300px;
@@ -114,12 +92,12 @@ a{
     position: relative;
 }
 
-.registrationForm_field{
+.registration_form_field {
     position: relative;
 }
 
 
-.registrationForm_field__input__password{
+.registration_form_field__input__password {
     padding: 16px;
     padding-left: 50px;
     width: 300px;
@@ -132,19 +110,17 @@ a{
     z-index: 9999;
     outline: none;
 }
-.registrationForm_field__input__password:focus{
+
+.registration_form_field__input__password:focus {
     border: 1px solid #F6F6F6 !important;
-
 }
 
-
-
-.registrationForm_field_image svg {
-    width: 100%; /* Заполнение всей ширины контейнера */
-    height: 100%; /* Заполнение всей высоты контейнера */
+.registration_form_field_image svg {
+    width: 100%;
+    height: 100%;
 }
 
-.registrationForm_field_imageEye {
+.registration_form_field_imageEye {
     user-select: none;
     position: absolute;
     right: 15px;
@@ -152,15 +128,13 @@ a{
     cursor: pointer;
 }
 
-.registrationForm_field_imageEye svg {
+.registration_form_field_imageEye svg {
     fill: #666;
-    width: 100%; /* Заполнение всей ширины контейнера */
-    height: 100%; /* Заполнение всей высоты контейнера */
+    width: 100%;
+    height: 100%;
 }
 
-
-
-.registrationForm_button{
+.registration_form_button {
     cursor: pointer;
     border: none;
     outline: none;
@@ -170,22 +144,22 @@ a{
     font-family: 'Formular';
     font-size: 18px;
     font-weight: 500;
-    border: 1px solid #D5FF03 ;
+    border: 1px solid #D5FF03;
     width: 175px;
     padding: 15px;
-    border-radius: 35px; 
+    border-radius: 35px;
 }
 
-.registrationForm_button:hover{
+.registration_form_button:hover {
     background-color: #D5FF03;
     color: black;
 }
 
-.registrationForm_field__hasAccount{
+.registration_form_field__hasAccount {
     margin-bottom: 30px;
 }
 
-.registrationForm_field__hasAccountText{
+.registration_form_field__hasAccountText {
     color: white;
     margin-right: 10px;
     font-family: 'Formular';
@@ -193,7 +167,7 @@ a{
     font-weight: 200;
 }
 
-.registrationForm_field__hasAccountLink{
+.registration_form_field__hasAccountLink {
     color: #D5FF03;
     margin-right: 10px;
     font-size: 18px;
@@ -209,104 +183,56 @@ a {
 .error {
     border: 1px solid #FF0000;
 }
-  
+
 .error_message {
     color: #FF0000;
     font-size: 12px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.registrationForm_field{
+.registration_form_field {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.registrationForm_field__password{
+.registration_form_field__password {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.passwordCharsCount{
+.passwordCharsCount {
     color: #515151;
     font-size: 16px;
     font-family: 'Formular';
 }
-.password_form__bottom{
+
+.password_form__bottom {
     display: flex;
     justify-content: space-between;
 }
 
-.password_form__bottom > :first-child {
-    order: 1; /* Гарантирует, что первый элемент всегда будет первым */
+.password_form__bottom> :first-child {
+    order: 1;
 }
 
-.password_form__bottom > :last-child {
-    order: 2; /* Гарантирует, что последний элемент всегда будет последним */
-    margin-left: auto; /* Прижимает элемент к правому краю */
+.password_form__bottom> :last-child {
+    order: 2;
+    margin-left: auto;
 }
-
-
-
-
-  video {
-    height: 100% !important;
-    width: 100% !important;
-  }
-
-  #qrCodeContainer {
-    position: relative;
-    width: 230px;
-    height: 190px;
-    border-radius: 7px;
-    overflow: hidden;
-  }
-  .rightQR_side_photoIcon{
-    width: 230px;
-    height: 190px;
-
-  }
-  #qr-shaded-region {
-
-    width: 300px;
-    height: 300px;
-    border-width: 50px !important;
-  }
-
-.registrationForm_button_camera{
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background-color: black;
-    color: #D5FF03;
-    line-height: 27px;
-    font-family: 'Formular';
-    font-size: 16px;
-    font-weight: 300;
-    border: 1px solid #D5FF03 ;
-    width: 175px;
-    padding: 15px;
-    border-radius: 20px; 
-}
-
-.registrationForm_button_camera:hover{
-    background-color: #D5FF03;
-    color: black;
-}
-
 
 @media (max-width: 1100px) {
-    
-    .rightQR_side_title h1{
+
+    .right_side_title h1 {
         font-size: 26px;
     }
 
-    .rightQR_side_desciption p{
+    .right_side_desciption p {
         font-size: 13px;
     }
 
-    .registrationForm_field__input__password{
+    .registration_form_field__input__password {
         padding: 12px;
         padding-left: 30px;
         width: 280px;
@@ -314,11 +240,11 @@ a {
         font-size: 14px;
     }
 
-    .underPhotoText{
+    .underPhotoText {
         font-size: 12px;
     }
 
-    .registrationForm_button{
+    .registration_form_button {
         cursor: pointer;
         border: none;
         outline: none;
@@ -328,104 +254,30 @@ a {
         font-family: 'Formular';
         font-size: 14px;
         font-weight: 500;
-        border: 1px solid #D5FF03 ;
+        border: 1px solid #D5FF03;
         width: 175px;
         padding: 10px;
-        border-radius: 35px; 
+        border-radius: 35px;
     }
-
-
-}
-
-
-@media (max-width: 720px) {
-    .rightQR_side_photoIcon{
-        width: 180px;
-        height: 120px;
-    }
-    #qr-shaded-region {
-
-        width: 280px;
-        height: 280px;
-        border-width: 50px !important;
-      }
-      
-    .registrationForm_button_camera{
-    
-        bottom: 40%;
-    }
-
 }
 
 
 @media (max-width: 450px) {
-   .registrationForm_field__input__password{
-    width: 180px;
-}
-.rightQR_side{
-    min-width: 200px;
-}
+    .registration_form_field__input__password {
+        width: 180px;
+    }
 
-.registrationForm_button_camera{
- 
-    bottom: 37%;
+    .right_side {
+        min-width: 200px;
+    }
+
+    .registration_form_button_camera {
+        bottom: 37%;
+    }
 }
-
-
-}
-
 
 @media (max-width: 800px) {
-
-
-    .burgerMenuIcon {
-        display: none;
-        cursor: pointer;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 20px;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-      }
-      
-      .burgerLine {
-        width: 100%;
-        height: 3px;
-        background-color: white;
-      }
-      
-      /* Скрываем левое меню по умолчанию */
-      .leftMenu_side {
-        width: 0;
-        overflow: hidden;
-        height: 100%;
-        background-color: #181818;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        transition: width 0.3s ease; /* Плавный переход */
-      }
-      
-      .menuOpen {
-        width: 75%;
-    }
-    .burgerMenuIcon {
-      display: flex;
-    }
-  
-    .leftMenu_side {
-      width: 0;
-    }
-  
-    .rightQR_side {
+    .right_side {
         width: 100%;
     }
-  
-    .menuOpen {
-        width: 75%;
-    }
-  }
-  
+}

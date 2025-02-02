@@ -1,40 +1,29 @@
 import s from './add-new-terrarium-info.module.css'
+import layout from '@/shared/styles/layout.module.css'
 import { Link } from 'react-router-dom';
-import { Navbar } from '../../../shared/navbar/navbar';
-import { useState } from 'react';
-
-
+import { Navbar } from '@/shared/navbar/navbar';
+import { BurgerMenu } from '@/shared/ui/burger-menu/burger-menu';
+import { RootState } from '@/app/store';
+import { useSelector } from 'react-redux';
 
 function AddNewTerrariumInfo() {
-      const [menuOpen, setMenuOpen] = useState(false);
+      const menuOpen = useSelector((store: RootState) => store.visibleMenu.isVisible)
 
-      const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-      };
-      
   return (
-  <div className={s.newTerrariumForm}>
-        <div className={s.newTerrariumForm_wrapper}>
-        <div className={s.burgerMenuIcon} onClick={toggleMenu}>
-                <div className={s.burgerLine}></div>
-                <div className={s.burgerLine}></div>
-                <div className={s.burgerLine}></div>
-              </div>
-
-              {/* Навигационное меню */}
-              <div className={`${s.leftMenu_side} ${menuOpen ? s.menuOpen : ''}`}>
-                <div className={s.leftMenu_side_wrapper}>
+  <div className={s.new_terrarium_form}>
+        <div className={s.new_terrarium_form_wrapper}>
+              <BurgerMenu />
+              <div className={`${layout.leftMenu_side} ${menuOpen ? layout.menuOpen : ''}`}>
+                <div className={layout.leftMenu_side_wrapper}>
                   <Navbar />
                 </div>
-              </div>
-              {menuOpen && <div className={s.menuOverlay} onClick={toggleMenu}></div>}
-       
-                <div className={s.rightQR_side}>
-                      <div className={s.rightQR_side_wrapper}>
-                              <div className={s.rightQR_side_title}>
+              </div>       
+                <div className={s.right_side}>
+                      <div className={s.right_side_wrapper}>
+                              <div className={s.right_side_title}>
                                     <h1>НОВЫЙ ТЕРРАРИУМ</h1>
                               </div>
-                              <div className={s.rightQR_side_desciption}>
+                              <div className={s.right_side_desciption}>
                                 <p>1. Зажмите кнопку на террариуме на 10 секунд <br/>
                                     2. На дисплее террариума появится значек wi-fi<br/>
                                     3. Подключите ваш телефон к wi-fi сети с именем "Umiter terrarium"<br/>
@@ -48,13 +37,11 @@ function AddNewTerrariumInfo() {
                                     Отсканируйте QR-код с дисплея террариума сканером ниже<br/>
                                     ! Или отсканируйте камерой телефона, перед вами появится код - введите его в поле ниже</p>
                               </div>
-                                <div className={s.registrationForm_button_wrapper}>
-                                      <Link to={'/new_terrarium'}>
-                                          <button onClick={() => {
-                                            
-                                            }} className={s.registrationForm_button}>Далее</button>
-                                      </Link>
-                                  </div>
+                              <div className={s.registration_form_button_wrapper}>
+                                    <Link to={'/new_terrarium'}>
+                                          <button className={s.registration_form_button}>Далее</button>
+                                    </Link>
+                              </div>
                       </div>
                 </div>
         </div>

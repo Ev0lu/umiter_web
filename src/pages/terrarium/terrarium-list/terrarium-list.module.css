@@ -1,119 +1,31 @@
-.menuOverlay {
-    position: fixed;
-    top: 0;
-    left: 0%; /* Начало overlay с правой стороны меню */
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    cursor: pointer;
-  }
-
-.leftMenu_side_wrapper{
-    display: flex;
-    flex-direction: column;
-}
-
-.leftMenu_side{
-    width: 25%;
-}
-
-.mainNav{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10%;
-}
-
-.logotype{
-    width: 100%;
-    height: 51%;
-}
-
-.navMenuLink{
-    display: flex;
-    cursor: pointer;
-    height: 100%;
-    gap: 5%;
-    max-width: 284px;
-    font-size: 20px;
-    border-radius: 10px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 15px;
-    align-items: center;
-    justify-content: start;
-    border: 1px solid lightgray;
-    
-
-}
-
-.navMenu_active{
-    border: 1px solid #D5FF03;
-}
-
-
-.navMenuLink p{
-    font-family: 'Formular';
-    opacity: 0.9;
-    color: white;
-
-}
-.newTerrariumForm{
+.new_terrarium_form {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
 }
 
-.newTerrariumForm_wrapper{
+.new_terrarium_form_wrapper {
     display: flex;
     width: 100%;
     height: 100%;
 }
 
-.leftMenu_side{
-    overflow: hidden;
-    width: 25%;
-    height: 100%;
-    display: flex; /* Добавлено */
-    flex-direction: column; /* Добавлено */
-
-    background-color: #181818;
-}
-
-.leftMenu_side_wrapper{
-    height: 100%;
-
-    width: 100%;
-    /*padding: 10% 5% 10% 10%;*/
-    padding: 0%;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Добавлено */
-
-    gap: 18%;
-}
-
-.bottomNav{
+.bottomNav {
     height: 60%;
-
     display: flex;
     flex-direction: column;
     gap: 10%;
 }
 
-
-.rightQR_side{
+.right_side {
     background-color: #181818;
-    width: 70%;
+    width: 75%;
     height: 100%;
-    display: flex; /* Добавлено */
-    flex-direction: column; /* Добавлено */
-
-
+    display: flex;
+    flex-direction: column;
 }
 
-.rightQR_side_wrapper{
+.right_side_wrapper {
     height: 100%;
     width: 100%;
     display: flex;
@@ -123,8 +35,6 @@
     gap: 2%;
     padding: 3% 10% 3% 10%;
     overflow-y: auto;
-
-    
 }
 
 .grid_container {
@@ -139,36 +49,50 @@
 }
 
 .grid_container::-webkit-scrollbar {
-    width: 15px; /* Ширина всего элемента навигации */
-  }
-  
-  .grid_container::-webkit-scrollbar-track {
-    background: #181818; /* Цвет дорожки */
-  }
-  
-  .grid_container::-webkit-scrollbar-thumb {
-    background-color: lightgray; /* Цвет бегунка */
-    border-radius: 20px; /* Округление бегунка */
-    border: 3px solid #050c26; /* Оформление границ бегунка */
-  }
+    width: 15px;
+}
 
+.grid_container::-webkit-scrollbar-track {
+    background: #181818;
+}
+
+.grid_container::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 20px;
+    border: 3px solid #050c26;
+}
 
 .grid_item {
     background-color: #181818;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 133px;
+    padding: 8px;
     width: 100%;
     max-width: 316px;
-    min-width: 200px;
     border: 1px solid lightgray;
     border-radius: 15px;
+    margin: 0 auto;
+    height: 133px;
+    min-width: 200px;
+    cursor: pointer;
 }
 
+.grid_item a.text:active,
+.grid_item a.text:hover,
+.grid_item a.text {
+    text-decoration: none;
+    color: black;
+}
 
-.grid_item__leftSide_wrapper{
+.grid_item a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+}
+
+.grid_item__leftSide_wrapper {
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -179,50 +103,47 @@
     min-width: 200px;
     height: 100px;
     overflow: hidden;
-    
-    }
+}
 
-.grid_item__rightSide{
-        display: flex;
-        width: 50%;
-        min-width: 100px;
-        align-items: end;
-        justify-content: center;
-    
-        flex-direction: column;
-        gap: 45px;
-        padding-right: 5%;
-    }
+.grid_item__rightSide {
+    display: flex;
+    width: 50%;
+    min-width: 100px;
+    align-items: end;
+    justify-content: center;
+    flex-direction: column;
+    gap: 45px;
+    padding-right: 5%;
+}
 
-.grid_item__leftSide_wrapper h2{
+.grid_item__leftSide_wrapper h2 {
     font-family: 'Ultramono Wide Black';
     font-size: 20px;
     max-width: 230px;
 }
 
-
-.right_side__image{
+.right_side__image {
     display: flex;
     justify-content: end;
     height: 15px;
 }
 
-.rightSide_humidity{
+.rightSide_humidity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-wrap: nowrap;
+    gap: 10px;
+}
+
+.leftSide_temperature {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
 }
 
-.leftSide_temperature{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-
-.pageTitle{
+.pageTitle {
     width: 100%;
     color: #D5FF03;
     font-family: 'Ultramono Wide Black';
@@ -232,136 +153,95 @@
     min-height: 5%;
 }
 
-.profileName{
+.profileName {
     width: 100%;
-    margin-bottom: 15%;
+    margin-bottom: 10%;
     display: flex;
     gap: 15px;
+    margin-top: 20px;
     color: white;
     font-family: 'Formular';
     justify-content: end;
     align-items: end;
+    height: 30px;
 }
 
-
-.grid_item{
-    cursor: pointer;
+p {
+    font-family: 'Formular', sans-serif;
 }
-
-
-a.text:active, /* активная/посещенная ссылка */
-a.text:hover,  /* при наведении */
-a.text {
-    text-decoration: none;
-    color: black;
-}
-
-a{
-    text-decoration: none;
-    color: white;
-    display: flex;
-}
-
 
 @media (max-width: 800px) {
-
     .grid_container {
         grid-template-columns: repeat(1, 1fr);
         padding-right: 5%;
     }
 
-    .pageTitle h1{
+    .pageTitle h1 {
         font-size: 18px;
     }
 
-    .grid_item {
-        background-color: #181818;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 133px;
-        width: 100%;
-        max-width: 316px;
-        min-width: 0px;
-        border: 1px solid lightgray;
-        border-radius: 15px;
-    }
-
-
-    .grid_item__leftSide_wrapper h2{
-        font-family: 'Ultramono Wide Black';
+    .grid_item__leftSide_wrapper h2 {
         font-size: 16px;
-        max-width: 230px;
     }
-    
 }
 
+@media (max-width: 800px) {
+    .grid_item__leftSide_wrapper {
+        width: 50%;
+        min-width: 200px;
+    }
 
-
-
-  
-  @media (max-width: 800px) {
+    .right_side_wrapper {
+        padding: 3% 5% 3% 10%;
+    }
 
     .grid_container {
         height: 100%;
-        width: 100%;
-        display: grid;
         padding-right: 0%;
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 0%;
-        margin: 0 auto;
-        overflow-y: auto;
+        grid-template-columns: 1fr;
+        grid-gap: 8px;
+        align-items: start;
+        grid-auto-rows: auto;
+        grid-template-rows: repeat(auto-fill, minmax(150px, auto));
+        padding-right: 20px;
     }
 
-    .burgerMenuIcon {
-        display: none;
-        cursor: pointer;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 20px;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-      }
-      
-      .burgerLine {
-        width: 100%;
-        height: 3px;
-        background-color: white;
-      }
-      
-      /* Скрываем левое меню по умолчанию */
-      .leftMenu_side {
-        width: 0;
-        overflow: hidden;
-        height: 100%;
-        background-color: #181818;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        transition: width 0.3s ease; /* Плавный переход */
-      }
-      
-      .menuOpen {
-        width: 75%; /* Меню выезжает на 70% экрана */
-      }
-    .burgerMenuIcon {
-      display: flex;
-    }
-  
-    .leftMenu_side {
-      width: 0;
-    }
-  
-    .rightQR_side {
+
+    .right_side {
         width: 100%;
     }
-  
-    .menuOpen {
-        width: 75%; /* Настроить ширину при открытии меню */
+
+}
+
+@media (max-width: 360px) {
+    .grid_item__leftSide_wrapper {
+        width: 50%;
+        min-width: 140px;
     }
-  }
-  
+}
+
+@media (max-width: 320px) {
+    .leftSide_temperature {
+        gap: 5px;
+    }
+
+    .grid_item__leftSide_wrapper {
+        width: 40%;
+        min-width: 130px;
+    }
+}
+
+@media (max-width: 310px) {
+    .leftSide_temperature {
+        gap: 5px;
+    }
+
+    .grid_item__leftSide_wrapper {
+        width: 30%;
+        min-width: 125px;
+    }
+
+    .rightSide_humidity {
+        gap: 5px;
+    }
+}

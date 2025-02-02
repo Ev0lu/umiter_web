@@ -1,18 +1,14 @@
-.rightQR_side{
+.right_side {
     overflow-y: auto;
     padding: 10px 15px 0px 15px;
     margin-bottom: 100px;
     outline: none;
-
 }
 
-
-
-.rightQR_side_wrapper{
+.right_side_wrapper {
     display: flex;
     overflow-y: auto;
     outline: none;
-
     padding-right: 15px;
     flex-direction: column;
     text-align: center;
@@ -21,55 +17,48 @@
     margin-bottom: 50px;
 }
 
-.rightQR_side_wrapper::-webkit-scrollbar {
+.right_side_wrapper::-webkit-scrollbar {
     background: #181818;
-    width: 15px; /* Ширина всего элемента навигации */
+    width: 15px;
     outline: none;
+}
 
-  }
-  
-.rightQR_side_wrapper::-webkit-scrollbar-track {
-    background: #181818; /* Цвет дорожки */
+.right_side_wrapper::-webkit-scrollbar-track {
+    background: #181818;
     outline: none;
+}
 
-  }
-  
-.rightQR_side_wrapper::-webkit-scrollbar-thumb {
-    background-color: lightgray; /* Цвет бегунка */
-    border-radius: 20px; /* Округление бегунка */
-    border: 3px solid #181818; /* Оформление границ бегунка */
+.right_side_wrapper::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 20px;
+    border: 3px solid #181818;
     outline: none;
-  }
+}
 
-.rightQR_side::-webkit-scrollbar {
-    width: 15px; /* Ширина всего элемента навигации */
+.right_side::-webkit-scrollbar {
+    width: 15px;
     outline: none;
+}
 
-  }
-  
-.rightQR_side::-webkit-scrollbar-track {
-    background: #181818; /* Цвет дорожки */
+.right_side::-webkit-scrollbar-track {
+    background: #181818;
     outline: none;
+}
 
-  }
-  
-.rightQR_side::-webkit-scrollbar-thumb {
-    background-color: lightgray; /* Цвет бегунка */
-    border-radius: 20px; /* Округление бегунка */
-    border: 3px solid #181818; /* Оформление границ бегунка */
+.right_side::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 20px;
+    border: 3px solid #181818;
     outline: none;
+}
 
-  }
-
-
-.newTerrariumForm{
+.new_terrarium_form {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-
 }
 
-.newTerrariumForm_wrapper{
+.new_terrarium_form_wrapper {
     display: flex;
     width: 100%;
     height: 100%;
@@ -79,14 +68,14 @@
     gap: 15%;
 }
 
-.pageTitle{
+.pageTitle {
     color: #D5FF03;
     margin-bottom: 15%;
     font-family: 'Ultramono Wide Black';
     font-size: 12px;
 }
 
-.profile_item{
+.profile_item {
     display: flex;
     padding: 15px;
     width: 400px;
@@ -96,22 +85,18 @@
     text-align: start;
     font-family: 'Formular';
     margin-bottom: 8%;
-
+    cursor: pointer;
 }
 
-.profile_item:hover{
+.profile_item:hover {
     background-color: rgb(41, 41, 41);
 }
 
-
-
-
-
-.profile_name{
+.profile_name {
     width: 70%;
 }
 
-.profileList{
+.profileList {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -119,12 +104,9 @@
     height: 100%;
     margin-bottom: 15%;
     overflow-y: auto;
-
 }
 
-
-
-.registrationForm_field__input{
+.registration_form_field__input {
     padding: 16px;
     padding-left: 25px;
     width: 400px;
@@ -136,10 +118,12 @@
     position: relative;
     outline: none;
 }
-.registrationForm_field{
+
+.registration_form_field {
     position: relative;
 }
-.filteredSearchInput{
+
+.filteredSearchInput {
     padding: 8px;
     padding-left: 20%;
     width: 400px;
@@ -152,7 +136,7 @@
 
 }
 
-.registrationForm_field_image {
+.registration_form_field_image {
     user-select: none;
     position: absolute;
     left: 10%;
@@ -160,74 +144,73 @@
     z-index: 2;
 }
 
-.registrationForm_field_image svg {
-    width: 100%; /* Заполнение всей ширины контейнера */
-    height: 100%; /* Заполнение всей высоты контейнера */
-
+.registration_form_field_image svg {
+    width: 100%;
+    height: 100%;
 }
 
 .fixedItem {
     width: 250px;
     padding: 20px;
     margin: 0 auto;
-    position: fixed; /* Зафиксировать элемент */
-    bottom: 10px; /* Прилепить к низу экрана */
-    left: 0px; /* Выровнять по левому краю */
-    right: 0; /* Выровнять по правому краю */
-    background-color: #242424; /* Цвет фона */
-    text-align: center; /* Центрирование текста */
-    z-index: 1000; /* Убедитесь, что элемент сверху */
+    position: fixed;
+    bottom: 10px;
+    left: 0px;
+    right: 0;
+    background-color: #242424;
+    text-align: center;
+    z-index: 1000;
 }
 
 @media (max-width: 600px) {
-
     .fixedItem {
-        width: 100%;
+        width: 78%;
         margin: 0 auto;
-        position: fixed; /* Зафиксировать элемент */
-        bottom: 10px; /* Прилепить к низу экрана */
-        left: 0px; /* Выровнять по левому краю */
-        right: 0; /* Выровнять по правому краю */
-        background-color: #242424; /* Цвет фона */
-        text-align: center; /* Центрирование текста */
-        z-index: 1000; /* Убедитесь, что элемент сверху */
+        position: fixed;
+        bottom: 10px;
+        left: 0px;
+        right: 0;
+        background-color: #242424;
+        text-align: center;
+        z-index: 1000;
     }
-    .registrationForm_field__input{
+
+    .registration_form_field__input {
         width: 400px;
     }
-    .filteredSearchInput{
+
+    .filteredSearchInput {
         width: 400px;
     }
-    .pageTitle{
+
+    .pageTitle {
         font-size: 8px;
     }
 
-    .profile_item{
+    .profile_item {
         font-size: 16px;
     }
 }
 
 @media (max-width: 450px) {
-    .registrationForm_field__input{
+    .registration_form_field__input {
         width: 92%;
         margin-left: 15px;
-    }    
-    .filteredSearchInput{
+    }
+
+    .filteredSearchInput {
         width: 95%;
         margin-left: 15px;
     }
-    .pageTitle{
+
+    .pageTitle {
         font-size: 8px;
     }
-    .profile_item{
+
+    .profile_item {
         font-size: 16px;
-        width: 150%;
+        width: 120%;
         gap: 10%;
-    
+
     }
 }
-
-.profile_item{
-    cursor: pointer;
-}
-

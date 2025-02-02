@@ -1,122 +1,64 @@
 import s from './create-custom-profile.module.css'
-
+import layout from '@/shared/styles/layout.module.css'
 import { useState } from 'react'
-
-import temperature from '../../../assets/temperature.svg'
-import { Navbar } from '../../../shared/navbar/navbar';
-import { createProfile, refreshTokens, setTerrariumProfile } from '../../../shared/api'
-import { useNavigate } from 'react-router-dom'
-import { getToken } from '../../../App'
-
-
-
+import { temperature } from '@/shared/assets/imageAssets';
+import { Navbar } from '@/shared/navbar/navbar';
+import { BurgerMenu } from '@/shared/ui/burger-menu/burger-menu';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/app/store/index';
+import { setField } from '@/app/store/reducers/customProfileReducer';
+import { useTerrariumProfile } from '@/shared/api/terrarium';
 
 function CustomProfileCreation() {
-const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const [counterDay, setCounterDay] = useState(0)
+    const [counterNight, setCounterNight] = useState(0)
+    const profile = useSelector((state: RootState) => state.customProfile);
+    const menuOpen = useSelector((state: RootState) => state.visibleMenu.isVisible)
 
-const createTerrariumProfile = async () => {
-    const token = getToken('access');
-    if (!token) {
-            navigate('/login')
-    };
-    const data = {
-        "name": name,
-        "terId": sessionStorage.getItem('terrariumId') ? sessionStorage.getItem('terrariumId') : localStorage.getItem('terrariumToChange'),
-         "settings": {
-            "temperature_hot_night": temperatureHotNight,
-            "temperature_hot_day": temperatureHotDay,
-            "light_start_time": startTime,
-            "light_stop_time": endTime,
-            "humidity_max": humidityDay,
-            "humidity_min": humidityNight,
-            "temperature_cold_night": temperatureColdNight,
-            "temperature_cold_day": temperatureColdDay,
+    const { createTerrariumProfile } = useTerrariumProfile()
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target
+        if (name === 'startTime') {
+            if (value.includes(':') || value === '' || counterDay > 0) {
+                dispatch(setField({ field: name, value }));
+            } else if (value.length === 2 && counterDay === 0) {
+                dispatch(setField({ field: name, value: value + ':' }));
+                setCounterDay(1);
+            } else {
+                dispatch(setField({ field: name, value }));
+            }
+        } else if (name === 'endTime') {
+            if (value.includes(':') || value === '' || counterNight > 0) {
+                dispatch(setField({ field: name, value }));
+            } else if (value.length === 2 && counterNight === 0) {
+                dispatch(setField({ field: name, value: value + ':' }));
+                setCounterNight(1);
+            } else {
+                dispatch(setField({ field: name, value }));
+            }
+        } else {
+            dispatch(setField({ field: name, value }));
         }
     }
-    const response = await createProfile(token, data)
-    if (response.ok) {
-        const data = await response.json()
-        connectProfile(data.profileId)
-        navigate(`/terrarium/${sessionStorage.getItem('terrariumId') ? sessionStorage.getItem('terrariumId') : localStorage.getItem('terrariumToChange')}`)
-    } else if (response.status !== 401) {
-        refreshTokenByAPI()
-    }
-  }
 
-  const connectProfile = async (id: any) => {
-    const token = getToken('access');
-    if (!token) {
-            navigate('/login')
-    };
-    await setTerrariumProfile(sessionStorage.getItem('terrariumId') ? sessionStorage.getItem('terrariumId') : localStorage.getItem('terrariumToChange'), id, token)
-    if (localStorage.getItem('terrariumToChange')) {
-      navigate(`/terrarium/${localStorage.getItem('terrariumToChange')}/settings`)
-      localStorage.removeItem('terrariumToChange')    
-    } else {
-      navigate('/terrarium_info')
-    }
-  }
-
-  const refreshTokenByAPI = async () => {
-    const data = {
-        "clientId": "web-app",
-        "refreshToken": getToken('refresh')
-    }
-    const responseRefresh = await refreshTokens(data)
-    if (responseRefresh.ok) {
-        createTerrariumProfile()
-    } else {
-        navigate('/login')
-    }
-  }
-  const [temperatureHotNight, setTemperatureHotNight] = useState('')
-  const [temperatureHotDay, setTemperatureHotDay] = useState('')
-  const [startTime, setStartTime] = useState('')
-  const [endTime, setEndTime] = useState('')
-  const [temperatureColdNight, setTemperatureColdNight] = useState('')
-  const [temperatureColdDay, setTemperatureColdDay] = useState('')
-  const [humidityDay, setHumidityDay] = useState('')
-  const [humidityNight, setHumidityNight] = useState('')
-
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const [counterDay, setCounterDay] = useState(0)
-  const [counterNight, setCounterNight] = useState(0)
-  const [name, setName] = useState('');
-
-
-  return (
-  <div className={s.newTerrariumForm}>
-        <div className={s.newTerrariumForm_wrapper}>
-        <div className={s.burgerMenuIcon} onClick={toggleMenu}>
-                <div className={s.burgerLine}></div>
-                <div className={s.burgerLine}></div>
-                <div className={s.burgerLine}></div>
-              </div>
-
-              {/* Навигационное меню */}
-              <div className={`${s.leftMenu_side} ${menuOpen ? s.menuOpen : ''}`}>
-                <div className={s.leftMenu_side_wrapper}>
-                  <Navbar />
+    return (
+        <div className={s.new_terrarium_form}>
+            <div className={s.new_terrarium_form_wrapper}>
+                <BurgerMenu />
+                <div className={`${layout.leftMenu_side} ${menuOpen ? layout.menuOpen : ''}`}>
+                    <div className={layout.leftMenu_side_wrapper}>
+                        <Navbar />
+                    </div>
                 </div>
-              </div>
-              {menuOpen && <div className={s.menuOverlay} onClick={toggleMenu}></div>}
-                <div className={s.rightQR_side}>
-                      <div className={s.rightQR_side_wrapper}>
- 
-                      <div className={s.pageTitle}>
-                            <input value={name}
-                            onChange={(e) => {setName(e.target.value)}} className={`${s.registrationForm_field__input}`}  placeholder='Введите название'></input>
-
+                <div className={s.right_side}>
+                    <div className={s.right_side_wrapper}>
+                        <div className={s.pageTitle}>
+                            <input name="name" value={profile.name} onChange={handleChange} className={`${s.registration_form_field__input}`} placeholder='Введите название'></input>
                         </div>
-                        <div  className={s.statisticCorrectMode}>
-
-                            <div className={s.statisticCorrectMode_left}>
+                        <div className={s.statistic_correct_mode}>
+                            <div className={s.statistic_correct_mode_left}>
                                 <div className={s.title_left}>
                                     <img src={temperature}></img>
                                     <p>Температура воздуха в верхнем углу</p>
@@ -124,71 +66,22 @@ const createTerrariumProfile = async () => {
                                 <div className={s.input_left}>
                                     <div className={s.input_left_item}>
                                         <p>День</p>
-                                        <input value={temperatureHotDay} onChange={(e) => {
-
-
-                                                setTemperatureHotDay(e.target.value);
-
-                                              
-                                              // Если значение целое, добавляем ".0" в конце
-                                            
-                                            }} placeholder='36' maxLength={2} />
+                                        <input name="temperatureHotDay" value={profile.temperatureHotDay} onChange={handleChange} placeholder='36' maxLength={2} />
                                     </div>
                                     <div className={s.input_left_item}>
                                         <p>Ночь</p>
-                                        <input value={temperatureHotNight} maxLength={2} onChange={(e) => {
-                                            setTemperatureHotNight(e.target.value);
-
-/*
-                                        if (e.target.value.includes('.') || e.target.value === '') {
-                                            setTemperatureHotNight(e.target.value);
-                                        } else if (e.target.value.split('').length === 2) {
-                                            setTemperatureHotNight( e.target.value + '.');
-                                        } else {
-                                            setTemperatureHotNight(e.target.value);
-
-                                        }*/
-                                        // Если значение целое, добавляем ".0" в конце
-
-                                        }} placeholder='31' />
+                                        <input name="temperatureHotNight" value={profile.temperatureHotNight} maxLength={2} onChange={handleChange} placeholder='31' />
                                     </div>
                                 </div>
                                 <p className={s.input_left_second__title}>Нижний угол</p>
                                 <div className={s.input_left}>
                                     <div className={s.input_left_item}>
                                         <p>День</p>
-                                        <input value={temperatureColdDay} onChange={(e) => {
-                                            setTemperatureColdDay(e.target.value);
-
-                                            //   if (e.target.value.includes('.') || e.target.value === '') {
-                                            //     setTemperatureColdDay(e.target.value);
-                                            //   } else if (e.target.value.split('').length === 2) {
-                                            //     setTemperatureColdDay( e.target.value + '.');
-                                            //   } else {
-                                            //     setTemperatureColdDay(e.target.value);
-
-                                            //   }
-                                              // Если значение целое, добавляем ".0" в конце
-                                            
-                                            }} placeholder='36' maxLength={2} />
+                                        <input name="temperatureColdDay" value={profile.temperatureColdDay} onChange={handleChange} placeholder='36' maxLength={2} />
                                     </div>
                                     <div className={s.input_left_item}>
                                         <p>Ночь</p>
-                                        <input value={temperatureColdNight} maxLength={2} onChange={(e) => {
-
-                                           setTemperatureColdNight(e.target.value);
-
-                                        // if (e.target.value.includes('.') || e.target.value === '') {
-                                        //     setTemperatureColdNight(e.target.value);
-                                        // } else if (e.target.value.split('').length === 2) {
-                                        //     setTemperatureColdNight( e.target.value + '.');
-                                        // } else {
-                                        //     setTemperatureColdNight(e.target.value);
-
-                                        // }
-                                        // Если значение целое, добавляем ".0" в конце
-
-                                        }} placeholder='31' />
+                                        <input name="temperatureColdNight" value={profile.temperatureColdNight} maxLength={2} onChange={handleChange} placeholder='31' />
                                     </div>
                                 </div>
 
@@ -196,18 +89,11 @@ const createTerrariumProfile = async () => {
                                 <div className={s.input_left}>
                                     <div className={s.input_left_item}>
                                         <p>Минимум</p>
-                                        <input value={humidityNight} onChange={(e) => {
-
-
-                                              setHumidityNight(e.target.value)
-                                            }} placeholder='31' maxLength={2} />
+                                        <input name="humidityNight" value={profile.humidityNight} onChange={handleChange} placeholder='31' maxLength={2} />
                                     </div>
                                     <div className={s.input_left_item}>
                                         <p>Максимум</p>
-                                        <input value={humidityDay} maxLength={2} onChange={(e) => {
-                                              setHumidityDay(e.target.value)
-
-                                        }} placeholder='70' />
+                                        <input name="humidityDay" value={profile.humidityDay} maxLength={2} onChange={handleChange} placeholder='70' />
                                     </div>
                                 </div>
 
@@ -215,57 +101,37 @@ const createTerrariumProfile = async () => {
                                 <div className={s.input_left}>
                                     <div className={s.input_left_item}>
                                         <p>Начало</p>
-                                        <input value={startTime} maxLength={5} onChange={(e) => {
-
-
-                                        if (e.target.value.includes(':') || e.target.value === '' || counterDay > 0) {
-                                            setStartTime(e.target.value);
-                                        } else if (e.target.value.split('').length === 2  && counterDay === 0) {
-
-                                            setStartTime( e.target.value + ':');
-                                            setCounterDay(1)
-
-                                        } else {
-                                            setStartTime(e.target.value);
-
-                                        }
-
-                                        }} placeholder='07:00' />
+                                        <input name="startTime" value={profile.startTime} maxLength={5} onChange={handleChange} placeholder='07:00' />
                                     </div>
                                     <div className={s.input_left_item}>
                                         <p>Конец</p>
-                                        <input value={endTime} maxLength={5} onChange={(e) => {
-
-
-                                        if (e.target.value.includes(':') || e.target.value === '' || counterNight > 0) {
-                                            setEndTime(e.target.value);
-                                        } else if (e.target.value.split('').length === 2 && counterNight === 0) {
-                                            setEndTime( e.target.value + ':');
-                                            setCounterNight(1)
-                                        } else {
-                                            setEndTime(e.target.value);
-                                        }
-                                        // Если значение целое, добавляем ".0" в конце
-
-                                        }} placeholder='22:00' />
+                                        <input name="endTime" value={profile.endTime} maxLength={5} onChange={handleChange} placeholder='22:00' />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div  className={s.button_wrapper}>
-                        <button onClick={() => {
-                            if (name !== '' && temperatureHotNight !== '' && temperatureHotDay !== ''  && startTime !== ''  && endTime !== ''  && temperatureColdNight !== ''  && temperatureColdDay !== ''  && humidityDay !== ''  && humidityNight !== '') {
-                                createTerrariumProfile()
-                            }
-                        }} className={s.registrationForm_button}>Сохранить</button>
-                                </div>
-                      </div>
-
+                        <div className={s.button_wrapper}>
+                            <button onClick={() => {
+                                if (
+                                    profile.name &&
+                                    profile.temperatureHotNight &&
+                                    profile.temperatureHotDay &&
+                                    profile.startTime &&
+                                    profile.endTime &&
+                                    profile.temperatureColdNight &&
+                                    profile.temperatureColdDay &&
+                                    profile.humidityDay &&
+                                    profile.humidityNight
+                                ) {
+                                    createTerrariumProfile();
+                                }
+                            }} className={s.registration_form_button}>Сохранить</button>
+                        </div>
+                    </div>
                 </div>
+            </div>
         </div>
-
-  </div>
-  )
+    )
 }
 
 export default CustomProfileCreation
