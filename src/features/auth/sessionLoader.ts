@@ -21,7 +21,6 @@ const refreshTokens = async (refreshToken: string) => {
 };
 
 export const sessionLoader = async () => {
-  console.log('sad')
   if (isTokenExpired("access")) {
     if (isTokenExpired("refresh")) return redirect("/login");
 
