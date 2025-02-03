@@ -1,0 +1,260 @@
+.new_terrarium_form {
+    min-height: 100%;
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.new_terrarium_form_wrapper {
+    display: flex;
+    min-height: 100%;
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.right_side {
+    overflow-y: auto;
+    min-height: 100%;
+    min-width: 100%;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.right_side_wrapper {
+    overflow-y: auto;
+    min-height: 800px;
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2%;
+    padding: 3% 10% 3% 10%;
+}
+
+.right_side_title h1 {
+    text-align: center;
+    font-family: 'Ultramono Wide Black';
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 36px;
+    color: #D5FF03;
+}
+
+.right_side_desciption {
+    text-align: center;
+    max-width: 800px;
+}
+
+.right_side_desciption p {
+    color: grey;
+    font-family: 'Formular';
+}
+
+.underPhotoText {
+    font-family: 'Formular';
+    color: rgb(61, 59, 59);
+}
+
+.registration_form_field__input {
+    padding: 16px;
+    padding-left: 50px;
+    width: 300px;
+    border-radius: 5px;
+    background-color: #181818;
+    color: #515151;
+    font-size: 16px;
+    border: 1px solid #F6F6F6;
+    position: relative;
+}
+
+.registration_form_field {
+    position: relative;
+}
+
+.registration_form_field__input__password {
+    padding: 16px;
+    padding-left: 50px;
+    width: 300px;
+    border-radius: 5px;
+    background-color: #181818;
+    color: #515151;
+    font-size: 16px;
+    border: 1px solid #F6F6F6 !important;
+    position: relative;
+    z-index: 9999;
+    outline: none;
+}
+
+.registration_form_field__input__password:focus {
+    border: 1px solid #F6F6F6 !important;
+}
+
+.registration_form_field_image svg {
+    width: 100%;
+    height: 100%;
+}
+
+.registration_form_field_imageEye {
+    user-select: none;
+    position: absolute;
+    right: 15px;
+    top: 18px;
+    cursor: pointer;
+}
+
+.registration_form_field_imageEye svg {
+    fill: #666;
+    width: 100%;
+    height: 100%;
+}
+
+.registration_form_button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: #181818;
+    color: #D5FF03;
+    line-height: 27px;
+    font-family: 'Formular';
+    font-size: 18px;
+    font-weight: 500;
+    border: 1px solid #D5FF03;
+    width: 175px;
+    padding: 15px;
+    border-radius: 35px;
+}
+
+.registration_form_button:hover {
+    background-color: #D5FF03;
+    color: black;
+}
+
+.registration_form_field__hasAccount {
+    margin-bottom: 30px;
+}
+
+.registration_form_field__hasAccountText {
+    color: white;
+    margin-right: 10px;
+    font-family: 'Formular';
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.registration_form_field__hasAccountLink {
+    color: #D5FF03;
+    margin-right: 10px;
+    font-size: 18px;
+    font-family: 'Formular';
+    text-decoration: none;
+    border-bottom: 1px solid #D5FF03;
+}
+
+a {
+    text-decoration: none;
+}
+
+.error {
+    border: 1px solid #FF0000;
+}
+
+.error_message {
+    color: #FF0000;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.registration_form_field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.registration_form_field__password {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.passwordCharsCount {
+    color: #515151;
+    font-size: 16px;
+    font-family: 'Formular';
+}
+
+.password_form__bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.password_form__bottom> :first-child {
+    order: 1;
+}
+
+.password_form__bottom> :last-child {
+    order: 2;
+    margin-left: auto;
+}
+
+
+@media (max-width: 1100px) {
+
+    .right_side_title h1 {
+        font-size: 26px;
+    }
+
+    .right_side_desciption p {
+        font-size: 13px;
+    }
+
+    .registration_form_field__input__password {
+        padding: 12px;
+        padding-left: 30px;
+        width: 280px;
+        font-size: 14px;
+    }
+
+    .underPhotoText {
+        font-size: 12px;
+    }
+
+    .registration_form_button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background-color: #181818;
+        color: #D5FF03;
+        line-height: 27px;
+        font-family: 'Formular';
+        font-size: 14px;
+        font-weight: 500;
+        border: 1px solid #D5FF03;
+        width: 175px;
+        padding: 10px;
+        border-radius: 35px;
+    }
+}
+
+@media (max-width: 450px) {
+    .registration_form_field__input__password {
+        width: 180px;
+    }
+
+    .right_side {
+        min-width: 200px;
+    }
+
+    .registration_form_button_camera {
+        bottom: 37%;
+    }
+}

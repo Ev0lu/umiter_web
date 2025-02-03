@@ -1,0 +1,247 @@
+.new_terrarium_form {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.new_terrarium_form_wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.bottomNav {
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+}
+
+.right_side {
+    background-color: #181818;
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.right_side_wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+    padding: 3% 10% 3% 10%;
+    overflow-y: auto;
+}
+
+.grid_container {
+    height: 78%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10%;
+    margin: 0 auto;
+    overflow-y: auto;
+    padding-right: 2%;
+}
+
+.grid_container::-webkit-scrollbar {
+    width: 15px;
+}
+
+.grid_container::-webkit-scrollbar-track {
+    background: #181818;
+}
+
+.grid_container::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 20px;
+    border: 3px solid #050c26;
+}
+
+.grid_item {
+    background-color: #181818;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    width: 100%;
+    max-width: 316px;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    margin: 0 auto;
+    height: 133px;
+    min-width: 200px;
+    cursor: pointer;
+}
+
+.grid_item a.text:active,
+.grid_item a.text:hover,
+.grid_item a.text {
+    text-decoration: none;
+    color: black;
+}
+
+.grid_item a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+}
+
+.grid_item__leftSide_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 50%;
+    gap: 40%;
+    padding-left: 10%;
+    min-width: 200px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.grid_item__rightSide {
+    display: flex;
+    width: 50%;
+    min-width: 100px;
+    align-items: end;
+    justify-content: center;
+    flex-direction: column;
+    gap: 45px;
+    padding-right: 5%;
+}
+
+.grid_item__leftSide_wrapper h2 {
+    font-family: 'Ultramono Wide Black';
+    font-size: 20px;
+    max-width: 230px;
+}
+
+.right_side__image {
+    display: flex;
+    justify-content: end;
+    height: 15px;
+}
+
+.rightSide_humidity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-wrap: nowrap;
+    gap: 10px;
+}
+
+.leftSide_temperature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pageTitle {
+    width: 100%;
+    color: #D5FF03;
+    font-family: 'Ultramono Wide Black';
+    font-size: 10px;
+    margin-left: 4%;
+    margin-bottom: 4%;
+    min-height: 5%;
+}
+
+.profileName {
+    width: 100%;
+    margin-bottom: 10%;
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    color: white;
+    font-family: 'Formular';
+    justify-content: end;
+    align-items: end;
+    height: 30px;
+}
+
+p {
+    font-family: 'Formular', sans-serif;
+}
+
+@media (max-width: 800px) {
+    .grid_container {
+        grid-template-columns: repeat(1, 1fr);
+        padding-right: 5%;
+    }
+
+    .pageTitle h1 {
+        font-size: 18px;
+    }
+
+    .grid_item__leftSide_wrapper h2 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 800px) {
+    .grid_item__leftSide_wrapper {
+        width: 50%;
+        min-width: 200px;
+    }
+
+    .right_side_wrapper {
+        padding: 3% 5% 3% 10%;
+    }
+
+    .grid_container {
+        height: 100%;
+        padding-right: 0%;
+        grid-template-columns: 1fr;
+        grid-gap: 8px;
+        align-items: start;
+        grid-auto-rows: auto;
+        grid-template-rows: repeat(auto-fill, minmax(150px, auto));
+        padding-right: 20px;
+    }
+
+
+    .right_side {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 360px) {
+    .grid_item__leftSide_wrapper {
+        width: 50%;
+        min-width: 140px;
+    }
+}
+
+@media (max-width: 320px) {
+    .leftSide_temperature {
+        gap: 5px;
+    }
+
+    .grid_item__leftSide_wrapper {
+        width: 40%;
+        min-width: 130px;
+    }
+}
+
+@media (max-width: 310px) {
+    .leftSide_temperature {
+        gap: 5px;
+    }
+
+    .grid_item__leftSide_wrapper {
+        width: 30%;
+        min-width: 125px;
+    }
+
+    .rightSide_humidity {
+        gap: 5px;
+    }
+}
