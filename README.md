@@ -15,7 +15,7 @@ This web application allows users to efficiently manage and monitor their terrar
 
 ## App
 ```
-https://app.umiter.ru
+https://lk-umiter.ru
 ```
 ---
 
