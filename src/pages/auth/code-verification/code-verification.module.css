@@ -1,0 +1,292 @@
+.registration_form {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    background-color: #181818;
+    overflow-y: auto;
+}
+
+.registration_form_wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+}
+
+.logotype {
+    user-select: none;
+    pointer-events: none;
+}
+
+.registration_form_wrapper {
+    display: flex;
+    min-height: 850px;
+}
+
+.registration_form_fields {
+    margin-top: 4%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+}
+
+.registration_form_header{
+    font-family: 'Ultramono Wide Black';
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 24px;
+    color: #D5FF03;
+    margin-bottom: 40px;
+}
+
+.registration_form_button_wrapper {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.registration_form_button_wrapper p {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-family: 'Formular', sans-serif;
+}
+
+.registration_form_button__again {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: #181818;
+    color: #D5FF03;
+    line-height: 27px;
+    font-family: 'Formular';
+    font-size: 18px;
+    font-weight: 500;
+    border: 1px solid #D5FF03;
+    width: 260px;
+    padding: 15px;
+    border-radius: 35px;
+    margin-bottom: 5%;
+}
+
+.registration_form_button__again__disabled {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: #D5FF03;
+    color: black;
+    line-height: 27px;
+    font-family: 'Formular';
+    font-size: 18px;
+    font-weight: 500;
+    border: 1px solid #D5FF03;
+    width: 260px;
+    padding: 15px;
+    border-radius: 35px;
+    margin-bottom: 5%;
+}
+
+.registration_form_button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: #181818;
+    color: #D5FF03;
+    line-height: 27px;
+    font-family: 'Formular';
+    font-size: 18px;
+    font-weight: 500;
+    border: 1px solid #D5FF03;
+    width: 190px;
+    padding: 15px;
+    border-radius: 35px;
+    margin-bottom: 20%;
+}
+
+.registration_form_button:hover {
+    background-color: #D5FF03;
+    color: black;
+}
+
+.registration_form_field__hasAccount {
+    margin-bottom: 10px;
+}
+
+.registration_form_field__hasAccountText {
+    color: white;
+    margin-right: 10px;
+    font-family: 'Formular';
+    font-size: 14px;
+    font-weight: 200;
+}
+
+.registration_form_field__hasAccountLink {
+    color: #D5FF03;
+    margin-right: 10px;
+    font-size: 14px;
+    font-family: 'Formular';
+    text-decoration: none;
+    border-bottom: 1px solid #D5FF03;
+}
+
+a {
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .logotype {
+        display: none;
+    }
+    
+    .registration_form_header {
+        font-size: 28px;
+    }
+
+    .registration_form_wrapper {
+        gap: 0%;
+
+    }
+}
+
+.error {
+    border: 1px solid #FF0000;
+}
+
+.error_message {
+    color: #FF0000;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.registration_form_field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.registration_form_field__password {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.passwordCharsCount {
+    color: #515151;
+    font-size: 16px;
+    font-family: 'Formular';
+}
+
+.password_form__bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.password_form__bottom> :first-child {
+    order: 1;
+}
+
+.password_form__bottom> :last-child {
+    order: 2;
+    margin-left: auto;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #181818;
+    filter: grayscale(1);
+    z-index: 1239;
+}
+
+input[type='radio']:after {
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+    position: relative;
+    background-color: #D5FF03;
+    content: '';
+    display: inline-block;
+    visibility: hidden;
+    border: 2px solid #181818;
+}
+
+input[type='radio']:checked:after {
+    width: 12px;
+    height: 12px;
+    border-radius: 15px;
+    top: 12%;
+    left: 12%;
+    position: relative;
+    background-color: #D5FF03;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #181818;
+}
+
+.gender {
+    margin-right: 10px;
+}
+
+.radio_gender {
+    display: flex;
+    margin-left: 15px;
+    margin: 0 auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    color: #181818;
+
+}
+
+.registration_form_field__hasAccount__agreement {
+    margin-bottom: 30px;
+}
+
+.registration_form_field__hasAccountText__agreement {
+    color: white;
+    font-family: 'Formular';
+    font-size: 14px;
+    font-weight: 200;
+    margin-right: 10px;
+    margin-top: 1px;
+}
+
+.registration_form_field__hasAccountLink__agreement {
+    color: #D5FF03;
+    font-size: 14px;
+    font-family: 'Formular';
+    text-decoration: none;
+    border-bottom: 1px solid #D5FF03;
+}
+
+.code_input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+.code_verification {
+    margin-bottom: 10%;
+}
+
+.header_text {
+    text-align: center;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    color: #FAFAFA;
+    font-family: 'Formular';
+    opacity: 0.8;
+    font-size: 16px;
+}

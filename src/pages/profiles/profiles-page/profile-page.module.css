@@ -1,0 +1,216 @@
+.right_side {
+    overflow-y: auto;
+    padding: 10px 15px 0px 15px;
+    margin-bottom: 100px;
+    outline: none;
+}
+
+.right_side_wrapper {
+    display: flex;
+    overflow-y: auto;
+    outline: none;
+    padding-right: 15px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.right_side_wrapper::-webkit-scrollbar {
+    background: #181818;
+    width: 15px;
+    outline: none;
+}
+
+.right_side_wrapper::-webkit-scrollbar-track {
+    background: #181818;
+    outline: none;
+}
+
+.right_side_wrapper::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 20px;
+    border: 3px solid #181818;
+    outline: none;
+}
+
+.right_side::-webkit-scrollbar {
+    width: 15px;
+    outline: none;
+}
+
+.right_side::-webkit-scrollbar-track {
+    background: #181818;
+    outline: none;
+}
+
+.right_side::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 20px;
+    border: 3px solid #181818;
+    outline: none;
+}
+
+.new_terrarium_form {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.new_terrarium_form_wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5%;
+    gap: 15%;
+}
+
+.pageTitle {
+    color: #D5FF03;
+    margin-bottom: 15%;
+    font-family: 'Ultramono Wide Black';
+    font-size: 12px;
+}
+
+.profile_item {
+    display: flex;
+    padding: 15px;
+    width: 400px;
+    gap: 40%;
+    color: white;
+    font-size: 20px;
+    text-align: start;
+    font-family: 'Formular';
+    margin-bottom: 8%;
+    cursor: pointer;
+}
+
+.profile_item:hover {
+    background-color: rgb(41, 41, 41);
+}
+
+.profile_name {
+    width: 70%;
+}
+
+.profileList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 15%;
+    overflow-y: auto;
+}
+
+.registration_form_field__input {
+    padding: 16px;
+    padding-left: 25px;
+    width: 400px;
+    border-radius: 5px;
+    background-color: #181818;
+    color: #515151;
+    font-size: 16px;
+    border: 1px solid #F6F6F6;
+    position: relative;
+    outline: none;
+}
+
+.registration_form_field {
+    position: relative;
+}
+
+.filteredSearchInput {
+    padding: 8px;
+    padding-left: 20%;
+    width: 400px;
+    border-radius: 5px;
+    background-color: #242424;
+    color: #515151;
+    font-size: 14px;
+    border: 1px solid #242424;
+    outline: none;
+
+}
+
+.registration_form_field_image {
+    user-select: none;
+    position: absolute;
+    left: 10%;
+    top: 15%;
+    z-index: 2;
+}
+
+.registration_form_field_image svg {
+    width: 100%;
+    height: 100%;
+}
+
+.fixedItem {
+    width: 250px;
+    padding: 20px;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 10px;
+    left: 0px;
+    right: 0;
+    background-color: #242424;
+    text-align: center;
+    z-index: 1000;
+}
+
+@media (max-width: 600px) {
+    .fixedItem {
+        width: 78%;
+        margin: 0 auto;
+        position: fixed;
+        bottom: 10px;
+        left: 0px;
+        right: 0;
+        background-color: #242424;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    .registration_form_field__input {
+        width: 400px;
+    }
+
+    .filteredSearchInput {
+        width: 400px;
+    }
+
+    .pageTitle {
+        font-size: 8px;
+    }
+
+    .profile_item {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 450px) {
+    .registration_form_field__input {
+        width: 92%;
+        margin-left: 15px;
+    }
+
+    .filteredSearchInput {
+        width: 95%;
+        margin-left: 15px;
+    }
+
+    .pageTitle {
+        font-size: 8px;
+    }
+
+    .profile_item {
+        font-size: 16px;
+        width: 120%;
+        gap: 10%;
+
+    }
+}
